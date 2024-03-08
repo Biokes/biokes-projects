@@ -2,14 +2,15 @@ package TicTacToe;
 
 import fireDrill1.fireDrill2.InvalidNumberException;
 
+import java.util.Objects;
+
 import static TicTacToe.CellDisplays.*;
-import static diary.DiaryMain.print;
 
 public class GameBoard {
     private int count =0;
-    private  Enum[][] board = {{EMPTY,EMPTY,EMPTY},{EMPTY,EMPTY,EMPTY},{EMPTY,EMPTY,EMPTY}};
-    private Player player1 = new Player("player one");
-    private Player player2  = new Player("player two");
+    private final  Enum[][] board = {{EMPTY,EMPTY,EMPTY},{EMPTY,EMPTY,EMPTY},{EMPTY,EMPTY,EMPTY}};
+    private final Player player1 = new Player("player one");
+    private final Player player2  = new Player("player two");
     public Enum checkCell(int given) {
         validateNumber(given);
         int line = --given /3;
@@ -68,17 +69,17 @@ public class GameBoard {
         return "";
     }
     public  String printBoard(){
-        String output = String.format("%s %s %s %s %s %s %s\n","-","-","-","-","-","-","-");
+        StringBuilder output = new StringBuilder (String.format ("%s %s %s %s %s %s %s\n", "-", "-", "-", "-", "-", "-", "-"));
         for(int row = 0; row < 3;row++){
             for(int column = 0; column < 3; column++) {
                 if (board[row][column] == EMPTY)
-                    output += String.format("%s %s", " ", " | ");
+                    output.append (String.format ("%s %s", " ", " | "));
                 else
-                    output += String.format("%s %s", board[row][column], " | ");
+                    output.append (String.format ("%s %s", board[row][column], " | "));
             }
-            output += String.format("\n%s %s %s %s %s %s %s\n","-","-","-","-","-","-","-");
+            output.append (String.format ("\n%s %s %s %s %s %s %s\n", "-", "-", "-", "-", "-", "-", "-"));
         }
-        return output;
+        return output.toString ( );
     }
     public void player1Game(){
         try {
@@ -104,14 +105,14 @@ public class GameBoard {
         for(int counter = 0; counter < 5; counter++){
             player1Game();
             System.out.println(printBoard());
-            if(result() != "" || result() ==  "Draw") {
+            if( !Objects.equals (result ( ), "") || Objects.equals (result ( ), "Draw") ) {
                 System.out.println(printBoard());
                 System.out.println((result()));
                break;
             }
             player2Game();
             System.out.println(printBoard());
-            if(!result().equals("")) {
+            if( !result ( ).isEmpty ( ) ) {
                 System.out.println((result()));
                 break;
             }

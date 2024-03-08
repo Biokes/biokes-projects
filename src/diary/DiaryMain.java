@@ -3,29 +3,29 @@ package diary;
 import javax.swing.*;
 
 public class DiaryMain {
-    private static boolean validate(String name){
+    private boolean validate(String name){
 
         return name.isBlank();
     }
-    private static String[] prompt(){
-        String name = input("welcome\nEnter your name ");
+    private  String[] prompt(){
+        String name = input("Enter your name ");
         String password= input("enter preferred password");
         String [] returnValue = new String[2];
         returnValue[0] = name;
         returnValue[1] = password;
         return returnValue;
     }
-    private static final Diaries diaries = new Diaries();
-    private static Diary diary;
-    public static void print(String output){
+    private  final Diaries diaries = new Diaries();
+    private Diary diary;
+    public void print(String output){
 
         JOptionPane.showMessageDialog(null,output);
     }
-    public static String input(String output){
+    public String input(String output){
 
         return JOptionPane.showInputDialog(null,output);
     }
-    private static void createNewDiary(){
+    private void createNewDiary(){
         String [] nameAndPassword = prompt();
         if(validate(nameAndPassword[0]) || validate(nameAndPassword[1])){
             print("Name or password cannot be blank.");
@@ -36,17 +36,30 @@ public class DiaryMain {
         print(String.format("%s \nEntry(s) created successfully.",diary.toString()));
         diaryMenu();
     }
+    private void findDiary(){
+        try {
+            String userName = input ("Enter diary username");
+            diary = diaries.findByUserName (userName);
+            diaryMenu ();
+        }catch(DiaryNotFoundException exception){
+            print(exception.getMessage ());
+            homePage ();
+        }
 
-    public static void main(String[] args){
 
-        homePage();
     }
-    private static void homePage(){
-        String choice = input("Welcome\n1. Create new Diary.\n2. Exit.");
+    public static void main(String[] args){
+        DiaryMain diaryMain = new DiaryMain();
+        diaryMain.homePage();
+    }
+    private void homePage(){
+        String choice = input("Welcome\n1. Create new Diary.\n2. Find Diary.\n3Exit.");
         switch(choice){
             case "1":
                 createNewDiary();
             case "2":
+                findDiary();
+            case "3":
                 print("GoodBye.");
                 System.exit(0);
             default:
@@ -54,11 +67,11 @@ public class DiaryMain {
                     }
 
     }
-    private static int askToLock(){
+    private int askToLock(){
 
         return JOptionPane.showInternalConfirmDialog(null,"Lock Diary");
     }
-    private static void createEntry(){
+    private void createEntry(){
         String title;
         String body;
         try {
@@ -74,7 +87,7 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-    private static void updateEntry(){
+    private void updateEntry(){
         try {
             if (diary.isLocked()) {
                 String password = input("enter password");
@@ -109,7 +122,7 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-    private static void deleteEntry() {
+    private  void deleteEntry() {
         try {
             int id = Integer.parseInt(input("Enter id of Entry to delete"));
             if(diary.isLocked()){
@@ -127,7 +140,7 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-    private static void diaryMenu(){
+    private  void diaryMenu(){
         String option = input("1. create Entry\n2. Update Entry\n3. Delete Entry\n4. Main menu\n5. Exit");
         switch(option){
             case "1":
@@ -145,5 +158,6 @@ public class DiaryMain {
         }
 
     }
-//    StringBuilder
 }
+//git init
+// git add .  && git commit -m "commit message" && git push

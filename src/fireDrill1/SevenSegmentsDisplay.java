@@ -4,7 +4,6 @@ import fireDrill1.fireDrill2.InvalidNumberException;
 
 import java.util.InputMismatchException;
 
-import static diary.DiaryMain.print;
 
 public class SevenSegmentsDisplay {
     public static String indexZero(String number) {
@@ -47,24 +46,23 @@ public class SevenSegmentsDisplay {
         return "      ";
     }
 
-    public static boolean validate(String number) {
+    public static void validate(String number) {
         if(!(number.matches("\\d+")))
             throw new InvalidNumberException();
         if(number.length() != 8)
             throw new InvalidNumberException();
-        return false;
     }
 
     public static String segments(String numbers){
         try{
             validate(numbers);
-            print(String.format("%s\n%s\n%s\n%s\n%s",
-                    indexZero(numbers), indexOne(numbers),indexSix(numbers),indexTwo(numbers),indexThree(numbers)));
+            System.out.printf ("%s\n%s\n%s\n%s\n%s%n",
+                    indexZero(numbers), indexOne(numbers),indexSix(numbers),indexTwo(numbers),indexThree(numbers));
         }catch(InvalidNumberException invalidNumberException){
-            print("Invalid number.");
+            System.out.println("Invalid number.");
         }
         catch(InputMismatchException exception){
-            print("Wrong set of characters");
+            System.out.println("Wrong set of characters");
         }
         return null;
     }
@@ -76,9 +74,9 @@ public class SevenSegmentsDisplay {
                 else
                     return "OFF";
             } catch (InvalidNumberException invalidNumberException) {
-                print("Invalid number.");
+                System.out.println("Invalid number.");
             } catch (InputMismatchException exception) {
-                print("Wrong set of characters");
+                System.out.println("Wrong set of characters");
             }
 
         return "";

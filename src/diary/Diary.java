@@ -1,18 +1,30 @@
 package diary;
 
+import javax.naming.InvalidNameException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Diary {
     public Diary(String name,String password){
-        this.userName = name;
+        validateUserName (name);
+        validatePassword (password);
+    }
+    private void validateUserName(String userName){
+        if(userName.isEmpty ())
+            throw new InvalidUserDetailsException();
+        this.userName = userName;
+    }
+    private void validatePassword(String password){
+        if(password.isEmpty ())
+            throw new InvalidUserDetailsException();
         this.password = password;
     }
-    private final String userName;
-    private final String password;
+
+    private String userName;
+    private String password;
     private boolean isLocked;
     private Entry entry;
-    private List<Entry> listOfEntries = new ArrayList<>();
+    private final List<Entry> listOfEntries = new ArrayList<>();
     public String checkUserName() {
 
         return userName;
@@ -39,7 +51,7 @@ public class Diary {
     }
 
     public String createEntry(String title, String body){
-            Entry entry = new Entry(1+listOfEntries.size(), title,body);
+            entry = new Entry(1+listOfEntries.size(), title,body);
             listOfEntries.add(entry);
             return entry.toString();
     }
@@ -76,10 +88,9 @@ public class Diary {
 
         isLocked = true;
     }
-    @Override
     public String toString(){
 
-        return String.format("UserName : %s\nNumber of enteries: %s",userName,listOfEntries.size());
+        return String.format("UserName : %s\nNumber of entries: %s",userName,listOfEntries.size());
     }
 
     public void deleteEntry(int id) {

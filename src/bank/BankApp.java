@@ -66,38 +66,30 @@ public class BankApp {
             print("Enter Deposit Amount in Figure: ");
             double amount = input.nextDouble();
             bank.deposit(accNumber,amount);
-        }catch(IllegalArgumentException error){
-            System.out.println(error.getMessage());
             display1();
-        } catch (InvalidAmountException error) {
-            System.out.println(error.getMessage());
-            display1();
-        } catch (IncorrectAccountNumberException error) {
+        }catch( IllegalArgumentException | IncorrectAccountNumberException | InvalidAmountException error){
             System.out.println(error.getMessage());
             display1();
         }
     }
-    private void menuThree() {
-        boolean condition = true;
-        do {
-            try {
-                print("Enter your Account Number: ");
-                int accNumber = input.nextInt();
-                print("Enter Destination Account Number: ");
-                int accNumber2 = input.nextInt();
-                print("Enter Transfer Amount in Figure: ");
-                double amount = input.nextDouble();
-                print("Enter you 4-digits pin: ");
-                String pin = input.next();
-                bank.transfer(accNumber, accNumber2, amount, pin);
-                print("Transaction Succesful.");
-                condition = false;
-            } catch (IllegalArgumentException | InvalidAmountException | IncorrectAccountNumberException |
-                     InsufficientBalanceException error) {
-                print(error.getMessage());
-                input.close();
-            }
-        } while (condition);
+    private void menuThree(){
+        try {
+            print("Enter your Account Number: ");
+            int accNumber = input.nextInt();
+            print("Enter Destination Account Number: ");
+            int accNumber2 = input.nextInt();
+            print("Enter Transfer Amount in Figure: ");
+            double amount = input.nextDouble();
+            print("Enter you 4-digits pin: ");
+            String pin = input.next();
+            bank.transfer(accNumber, accNumber2, amount, pin);
+            print("Transaction Succesful.");
+            display1();
+        } catch (IllegalArgumentException | InvalidAmountException | IncorrectAccountNumberException |
+                 InsufficientBalanceException error) {
+            print(error.getMessage());
+            display1 ();
+        }
 
     }
     private void menuFour(){
