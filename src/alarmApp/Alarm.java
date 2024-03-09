@@ -78,5 +78,7 @@ public class Alarm {
     }
 
 
-
+    public String checkTime() {
+        return null;
+    }
 }
