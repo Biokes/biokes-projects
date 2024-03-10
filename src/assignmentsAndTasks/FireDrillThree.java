@@ -1,38 +1,24 @@
 package assignmentsAndTasks;
 import java.util.ArrayList;
 public class FireDrillThree {
-    public static int[] taskOne(int num1, int num2,
-                                int num3,int num4, int num5, int num6,
-                                int num8, int num7,int num9,int num10){
-        int[]  numbers = new int[10];
-        numbers [0] = num1;
-        numbers [1] = num2;
-        numbers [2] = num3;
-        numbers [3] = num4;
-        numbers [4] = num5;
-        numbers [5] = num6;
-        numbers [6] = num8;
-        numbers [7] = num7;
-        numbers [8] = num9;
-        numbers [9] = num10;
+    public static int[] taskOne(int...num10){
 
-
-        return numbers;
+        return num10;
     }
     public static String taskTwo(int [] numbers){
-        String returnValue = "";
+        StringBuilder returnValue = new StringBuilder ( );
         for (int number : numbers) {
             String output = number + "\n";
             System.out.println(output);
-            returnValue += output;
+            returnValue.append(output);
         }
-        return returnValue;
+        return returnValue.toString ( );
     }
-    public static String  taskThree(int [] numbers){
-        String output ="";
+    public static StringBuilder  taskThree(int [] numbers){
+        StringBuilder output = new StringBuilder( );
         for (int number : numbers) {
             System.out.print(number + " ");
-            output += number + " ";
+            output.append (number).append (" ");
         }
         return output;
     }
@@ -118,7 +104,7 @@ public class FireDrillThree {
         }
         return maximum;
     }
-    public static int[] taskTwelve(int [] numbers) {
+    public static int[] taskTwelve(int [] numbers){
         for(int counter = 0; counter < numbers.length; counter+=2){
             int temporary;
             temporary = numbers[counter];
@@ -150,6 +136,9 @@ public class FireDrillThree {
         return numbers;
     }
     public static int[] taskFifteen(int [] numbers){
+        return getNumber(numbers);
+    }
+    private static int[] getNumber(int[] numbers) {
         for(int counter = 0; counter < numbers.length; counter+=2){
             if ( (numbers[counter]% 2 == 1 && numbers[counter+1]% 2== 0)|| (numbers[counter]% 2 == 0 && numbers[counter+1]% 2== 1)) {
                 int temporary = numbers[counter] ;
@@ -160,14 +149,7 @@ public class FireDrillThree {
         return numbers;
     }
     public static int[] taskSixteen(int [] numbers){
-        for(int counter = 0; counter < numbers.length; counter+=2){
-            if ( (numbers[counter]% 2 == 1 && numbers[counter+1]% 2== 0)|| (numbers[counter]% 2 == 0 && numbers[counter+1]% 2== 1) ) {
-                int temporary = numbers[counter];
-                numbers[counter] = numbers[counter + 1];
-                numbers[counter + 1] = temporary;
-            }
-        }
-        return numbers;
+        return getNumber (numbers);
     }
     public static String taskSeventeen(String input1, String input2){
         char []  temp1 = input1.toCharArray();
@@ -184,14 +166,12 @@ public class FireDrillThree {
         output = String.format("%s %s",(new String(temp1)),(new String(temp2)));
         return output;
     }
-
-    public static int[] taskEighteen(int[] given) {
+    public static int[] taskEighteen(int[] given){
         for(int count = 0; count < given.length; count++){
             given[count] = given[count]%2;
         }
         return given;
     }
-
     public static boolean[] taskNineteen(int[] given) {
         boolean [] output = new boolean [given.length];
         for(int counter = 0; counter < given.length; counter++ ){
@@ -200,7 +180,6 @@ public class FireDrillThree {
         return output;
     }
     public static int[] taskTwenty(int [] number){
-
         return new int [10];
     }
 }
