@@ -1,17 +1,21 @@
 package ecommerceStore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 public class User{
 private final String name;
+private final String mail;
     public User(String name, int i, String mail, String address, String password, String number) {
         this.name = name;
+        this.mail = mail;
     }
 
     public String getName() {
         return this.name;
+    }
+    private String getMail(){
+        return mail;
     }
 
     public int getNumberOfCartItems() {
