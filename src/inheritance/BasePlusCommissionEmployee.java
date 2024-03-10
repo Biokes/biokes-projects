@@ -8,7 +8,12 @@ public class BasePlusCommissionEmployee {
             throw new IllegalArgumentException("Invalid figure for base salary.");
         this.baseSalary = baseSalary;
     }
-
+    public BasePlusCommissionEmployee(String firstName, String lastName, String sSN,
+                                      double grossSales, double commissionRate,
+                                      double baseSalary){
+        employee = new CommissionEmployee (firstName, lastName, sSN, grossSales, commissionRate);
+        validateBaseSalary (baseSalary);
+    }
     public void setBaseSalary(double baseSalary) {
 
         validateBaseSalary (baseSalary);
