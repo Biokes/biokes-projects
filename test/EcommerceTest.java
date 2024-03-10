@@ -3,7 +3,7 @@ import ecommerceStore.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static ecommerceStore.ProductCategory.GROCERIES;
+import static ecommerceStore.ProductCategory.*;
 import static org.junit.Assert.assertEquals;
 
 public class EcommerceTest {
@@ -22,6 +22,29 @@ public class EcommerceTest {
         assertEquals(0,user.getNumberOfCartItems ());
         user.addItem(GROCERIES,"food");
         assertEquals(1,user.getNumberOfCartItems ());
+    }
+    @Test
+    void testUserCanGetCanAddMultipleItemstoCart(){
+        assertEquals(0,user.getNumberOfCartItems ());
+        user.addItem(GROCERIES,"food");
+        assertEquals(1,user.getNumberOfCartItems ());
+        user.addItem(UTENSILS,"spoons and plates");
+        assertEquals(2,user.getNumberOfCartItems ());
+        user.addItem(ELECTRONICS,"iron");
+        assertEquals(3,user.getNumberOfCartItems ());
+        user.addItem(CLOTHING,"gown");
+        assertEquals(4,user.getNumberOfCartItems ());
+    }
+    @Test
+    void testUserCAnAddAndRemoveItemsFormCart(){
+        user.addItem(GROCERIES,"food");
+        assertEquals(1,user.getNumberOfCartItems ());
+        user.addItem(UTENSILS,"spoons and plates");
+        assertEquals(2,user.getNumberOfCartItems ());
+        user.addItem(ELECTRONICS,"iron");
+        assertEquals(3,user.getNumberOfCartItems ());
+        user.removeItem(GROCERIES,"food");
+        assertEquals(2,user.getNumberOfCartItems ());
     }
 
 }

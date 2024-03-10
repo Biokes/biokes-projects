@@ -1,6 +1,7 @@
 package ecommerceStore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class User{
@@ -17,7 +18,11 @@ private final String name;
         return listOfItems.size();
     }
     public void addItem(ProductCategory category, String itemName){
-        this.listOfItems.add(itemName);
+        this.listOfItems.put (category,itemName);
     }
-    private List<String> listOfItems= new ArrayList<> ();
+    private HashMap<ProductCategory, String> listOfItems= new HashMap<>();
+
+    public void removeItem(ProductCategory productCategory, String food) {
+        listOfItems.remove(productCategory, food );
+    }
 }
