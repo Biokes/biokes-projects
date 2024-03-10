@@ -46,5 +46,7 @@ public class EcommerceTest {
         user.removeItem(GROCERIES,"food");
         assertEquals(2,user.getNumberOfCartItems ());
     }
+//    @Test
+//    void testUser
 
 }
