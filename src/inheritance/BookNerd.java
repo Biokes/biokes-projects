@@ -1,16 +1,13 @@
 package inheritance;
 
-import assignmentsAndTasks.MySet;
-
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookUsageClass{
+public class BookNerd{
     private final Book<Book> book;
     private List<Book> booksRead = new ArrayList<>();
 
-    public BookUsageClass(Book<Book> givenBook){
+    public BookNerd(Book<Book> givenBook){
         this.book = givenBook;
     }
     public void readBook(Book<Book> book){
