@@ -5,5 +5,8 @@ public class GirlFriend {
     public GirlFriend(BoyFriend gai){
         this.gai = gai;
     }
+public String spendMoney(){
+        return gai.spend();
+}
 
 }
