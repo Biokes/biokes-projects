@@ -9,4 +9,8 @@ private final String name;
     public String getName() {
         return this.name;
     }
+
+    public int getNumberOFBillings() {
+        return 0;
+    }
 }
