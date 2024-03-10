@@ -15,7 +15,7 @@ public class BookNerd{
         StringBuilder output = new StringBuilder();
         for( Book value : booksRead ){
             output.append(value.toString( ));
-            output.append("\n");
+            output.append("\n\n\n");
         }
         return output.toString();
     }
