@@ -11,4 +11,10 @@ public class AudioBook extends Book{
         this.length = length;
         this.artistName = artistName;
     }
+    public String toString(){
+        return super.toString()+ String.format("""
+                %nSize : %s
+                length : %s
+                ArtistName : %s""", this.size, this.length, this.artistName);
+    }
 }
