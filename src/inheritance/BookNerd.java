@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookNerd{
-    private final Book<Book> book;
+    private final Book<String>[] book;
     private List<Book> booksRead = new ArrayList<>();
 
-    public BookNerd(Book<Book> givenBook){
+    public BookNerd(Book<String>... givenBook){
         this.book = givenBook;
     }
     public void readBook(Book<Book> book){
@@ -26,8 +26,7 @@ public class BookNerd{
                 12.56, "artist");
         Book<String> book2 = new PrintBook("name1", "2000", "me1", "antman", "9013-12");
         Book<String> book3 = new Book<>("nanme", "9002", "no one");
-        System.out.println(book2);
-        System.out.println(book);
-        System.out.println(book3);
+        BookNerd user = new BookNerd(book, book3, book2);
+        System.out.println(user.getBooksRead( ));
     }
 }
