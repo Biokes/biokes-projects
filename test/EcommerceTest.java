@@ -3,6 +3,7 @@ import ecommerceStore.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static ecommerceStore.ProductCategory.GROCERIES;
 import static org.junit.Assert.assertEquals;
 
 public class EcommerceTest {
@@ -18,6 +19,9 @@ public class EcommerceTest {
     }
     @Test
     void testUserCanGetCanAddItemstoCart(){
-        assertEquals(0,user.getNumberOFBillings());
+        assertEquals(0,user.getNumberOfCartItems ());
+        user.addItem(GROCERIES,"food");
+        assertEquals(1,user.getNumberOfCartItems ());
     }
+
 }
