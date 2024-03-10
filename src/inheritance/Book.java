@@ -1,10 +1,10 @@
 package inheritance;
 
 public class Book<T>{
-    private final String name;
-    private final String yearOfPublication;
-    private final String author;
-    public Book(String name, String yearOfPublication, String author){
+    private final T name;
+    private final T yearOfPublication;
+    private final T author;
+    public Book(T name, T yearOfPublication, T author){
         this.name = name;
         this.author= author;
         this.yearOfPublication = yearOfPublication;
