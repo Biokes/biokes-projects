@@ -14,6 +14,10 @@ public class BasePlusCommissionEmployee {
         employee = new CommissionEmployee (firstName, lastName, sSN, grossSales, commissionRate);
         validateBaseSalary (baseSalary);
     }
+    public void setBaseSalary(double baseSalary) {
+
+        validateBaseSalary (baseSalary);
+    }
     public double getBaseSalary() {
 
         return baseSalary;
