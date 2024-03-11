@@ -7,11 +7,9 @@ import java.util.List;
 
 public class User{
 private final String name;
-private final String mail;
 private final List<BillingInfo> infos = new ArrayList<>();
     public User(String name, int age, String mail, String address, String password, String number) {
         this.name = name;
-        this.mail = mail;
     }
 
     public String getName() {
@@ -37,5 +35,14 @@ private final List<BillingInfo> infos = new ArrayList<>();
 
     public int numberOfBillingInfos(){
         return infos.size();
+    }
+
+    public void removeBillingInfo(String number, String name){
+        for(BillingInfo info: infos){
+            if(info.getname().equalsIgnoreCase(name) && info.getNumber().equals(number)){
+                infos.remove(info);
+                break;
+            }
+        }
     }
 }
