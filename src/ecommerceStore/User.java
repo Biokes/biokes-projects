@@ -8,6 +8,8 @@ import java.util.List;
 public class User{
 private final String name;
 private final List<BillingInfo> infos = new ArrayList<>();
+private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
+
     public User(String name, int age, String mail, String address, String password, String number) {
         this.name = name;
     }
@@ -23,7 +25,6 @@ private final List<BillingInfo> infos = new ArrayList<>();
     public void addItem(ProductCategory category, String itemName){
         this.listOfItems.put(category,itemName);
     }
-    private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
 
     public void removeItem(ProductCategory productCategory, String food){
 
