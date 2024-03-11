@@ -8,7 +8,7 @@ public class BillingInfo{
         this.number= number;
     }
 
-    public String getname(){
+    public String getName(){
         return this.name;
     }
 

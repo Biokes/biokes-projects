@@ -37,12 +37,13 @@ private final List<BillingInfo> infos = new ArrayList<>();
         return infos.size();
     }
 
-    public void removeBillingInfo(String number, String name){
-        for(BillingInfo info: infos){
-            if(info.getname().equalsIgnoreCase(name) && info.getNumber().equals(number)){
-                infos.remove(info);
-                break;
-            }
+    public void removeBillingInfo(String name, String number){
+        for(int counter = 0; counter < infos.size(); counter++){
+            if( infos.get(counter).getName( ).equalsIgnoreCase(name) )
+                if( infos.get(counter).getNumber( ).equalsIgnoreCase(number) ){
+                    infos.remove(infos.get(counter));
+                    break;
+                }
         }
     }
 }

@@ -60,10 +60,10 @@ public class EcommerceTest {
     }
     @Test
     void Test_userRemoveBillingInfo_billingInfoIsRemoved(){
-        customer.addBillingInfo(new BillingInfo("0909897", "name", new Address("12",
+        customer.addBillingInfo(new BillingInfo("name", "0909897", new Address("12",
                 "street","city","state","country")));
         assertEquals(1, customer.numberOfBillingInfos());
-        customer.removeBillingInfo("0909897", "name");
+        customer.removeBillingInfo("name", "0909897");
         assertEquals(0, customer.numberOfBillingInfos());
     }
 }
