@@ -53,5 +53,10 @@ public class EcommerceTest {
         customer.addBillingInfo(new BillingInfo("0909897", "name", new Address("12",
                 "street","city","state","country")));
         assertEquals(1, customer.numberOfBillingInfos());
+        customer.addBillingInfo(new BillingInfo("0909897", "name1", new Address("12",
+                "street","city","state","country")));
+        assertEquals(2, customer.numberOfBillingInfos());
+
     }
+
 }

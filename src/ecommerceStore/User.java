@@ -9,7 +9,7 @@ public class User{
 private final String name;
 private final String mail;
 private final List<BillingInfo> infos = new ArrayList<>();
-    public User(String name, int i, String mail, String address, String password, String number) {
+    public User(String name, int age, String mail, String address, String password, String number) {
         this.name = name;
         this.mail = mail;
     }
@@ -17,9 +17,7 @@ private final List<BillingInfo> infos = new ArrayList<>();
     public String getName() {
         return this.name;
     }
-    private String getMail(){
-        return mail;
-    }
+
 
     public int getNumberOfCartItems() {
         return listOfItems.size();
@@ -38,6 +36,6 @@ private final List<BillingInfo> infos = new ArrayList<>();
     }
 
     public int numberOfBillingInfos(){
-        return 0;
+        return infos.size();
     }
 }
