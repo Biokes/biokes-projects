@@ -67,5 +67,7 @@ public class EcommerceTest {
     @Test
     void test_customerRemoveInfoNotCreated_ExceptionIsThrown(){
         assertThrows(BillingInfoNotFoundException.class,()->customer.removeBillingInfo("name", "0909897"));
+        assertThrows(BillingInfoNotFoundException.class,()->customer.removeBillingInfo("nameGiven", "09098978923"));
+
     }
 }

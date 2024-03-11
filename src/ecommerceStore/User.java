@@ -42,8 +42,9 @@ private final List<BillingInfo> infos = new ArrayList<>();
             if( infos.get(counter).getName( ).equalsIgnoreCase(name) )
                 if( infos.get(counter).getNumber( ).equalsIgnoreCase(number) ){
                     infos.remove(infos.get(counter));
-                    break;
+                    return;
                 }
         }
+        throw new BillingInfoNotFoundException();
     }
 }
