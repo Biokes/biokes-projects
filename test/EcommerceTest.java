@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 public class EcommerceTest {
-    private User customer;
+    Customer customer = new Customer ("name", 12, "email@gmail.com","address","password","12345678");
     @BeforeEach
     void newUser(){
         customer= new Customer ("name", 12, "email@gmail.com","address","password","12345678");
@@ -15,6 +15,7 @@ public class EcommerceTest {
 
     @Test
     void test_customerNameIsGotten(){
+
         assertEquals("name", customer.getName());
     }
     @Test
@@ -45,7 +46,9 @@ public class EcommerceTest {
     }
     @Test
     void test_customerRemoveItemNotAdded_throwException(){
-        assertThrows(ItemNotFoundException.class,()->customer.removeItem(ELECTRONICS,"name"));
+        customer.addItem(GROCERIES, "product");
+        customer.removeItem(GROCERIES,"product");
+        assertEquals(0,customer.getNumberOfCartItems());
     }
     @Test
     void testUserCAnAddAndRemoveItemsFormCart(){

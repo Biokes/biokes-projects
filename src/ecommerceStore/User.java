@@ -27,8 +27,9 @@ private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
     }
 
     public void removeItem(ProductCategory productCategory, String food){
-
-        listOfItems.remove(productCategory, food );
+            if(listOfItems.get(productCategory).equalsIgnoreCase(food)){
+                listOfItems.remove(productCategory);
+            }
     }
 
     public void addBillingInfo(BillingInfo billingInfo){
