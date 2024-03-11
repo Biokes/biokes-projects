@@ -1,12 +1,10 @@
-import ecommerceStore.Address;
-import ecommerceStore.BillingInfo;
-import ecommerceStore.Customer;
-import ecommerceStore.User;
+import ecommerceStore.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static ecommerceStore.ProductCategory.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class EcommerceTest {
     private User customer;
@@ -65,5 +63,9 @@ public class EcommerceTest {
         assertEquals(1, customer.numberOfBillingInfos());
         customer.removeBillingInfo("name", "0909897");
         assertEquals(0, customer.numberOfBillingInfos());
+    }
+    @Test
+    void test_customerRemoveInfoNotCreated_ExceptionIsThrown(){
+        assertThrows(BillingInfoNotFoundException.class,()->customer.removeBillingInfo("name", "0909897"));
     }
 }
