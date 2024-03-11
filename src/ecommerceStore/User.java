@@ -1,11 +1,14 @@
 package ecommerceStore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class User{
 private final String name;
 private final String mail;
+private final List<BillingInfo> infos = new ArrayList<>();
     public User(String name, int i, String mail, String address, String password, String number) {
         this.name = name;
         this.mail = mail;
@@ -28,5 +31,13 @@ private final String mail;
 
     public void removeItem(ProductCategory productCategory, String food) {
         listOfItems.remove(productCategory, food );
+    }
+
+    public void addBillingInfo(BillingInfo billingInfo){
+        this.infos.add(billingInfo);
+    }
+
+    public int numberOfBillingInfos(){
+        return 0;
     }
 }
