@@ -25,15 +25,24 @@ private final List<BillingInfo> infos = new ArrayList<>();
     }
     private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
 
-    public void removeItem(ProductCategory productCategory, String food) {
+    public void removeItem(ProductCategory productCategory, String food){
+
         listOfItems.remove(productCategory, food );
     }
 
     public void addBillingInfo(BillingInfo billingInfo){
+        for( BillingInfo info : infos ){
+            if( info.getName( ).equalsIgnoreCase(name) )
+                if( info.getNumber( ).equalsIgnoreCase(billingInfo.getNumber( )) ){
+                    throw new InfoDetailsAlreadyExistException( );
+                }
+        }
         this.infos.add(billingInfo);
+
     }
 
     public int numberOfBillingInfos(){
+
         return infos.size();
     }
 
