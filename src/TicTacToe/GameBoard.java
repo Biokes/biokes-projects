@@ -88,7 +88,7 @@ public class GameBoard {
                 play(player1.playGame( ));
                 printBoard( );
                 condition = false;
-            }catch( InvalidCellNumberException|CellOccupiedException|InvalidNumberException exception ){
+            }catch(Exception exception ){
                 System.out.println(exception.getMessage( ));
                 play(player1.playGame( ));
             }
@@ -101,7 +101,7 @@ public class GameBoard {
                 play(player2.playGame( ));
                 printBoard( );
                 condition = false;
-            }catch( InvalidCellNumberException|CellOccupiedException|InvalidNumberException exception ){
+            }catch( Exception exception ){
                 System.out.println(exception.getMessage( ));
                 play(player2.playGame( ));
             }
