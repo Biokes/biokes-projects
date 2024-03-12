@@ -14,7 +14,9 @@ private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
         this.name = name;
     }
 
-    public String getName() {
+    public String getName()
+    {
+
         return this.name;
     }
 

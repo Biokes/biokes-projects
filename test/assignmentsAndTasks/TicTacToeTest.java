@@ -82,6 +82,7 @@ public class TicTacToeTest {
         assertEquals(X, game.checkCell(7));
         assertEquals(O, game.checkCell(8));
         assertEquals(X, game.checkCell(9));
+        assertThrows(CellOccupiedException.class, () -> game.play(4));
         assertEquals("Draw",game.result());
         for(int count = 0; ++count < 10;) {
             int finalCount = count;
