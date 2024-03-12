@@ -82,22 +82,29 @@ public class GameBoard {
         return output.toString ( );
     }
     public void player1Game(){
-        try {
-            play(player1.playGame());
-            printBoard();
-        }catch (InvalidCellNumberException | CellOccupiedException | InvalidNumberException exception){
-            System.out.println(exception.getMessage());
-            play(player1.playGame());
+        boolean condition = true;
+        while(condition){
+            try{
+                play(player1.playGame( ));
+                printBoard( );
+                condition = false;
+            }catch( InvalidCellNumberException|CellOccupiedException|InvalidNumberException exception ){
+                System.out.println(exception.getMessage( ));
+                play(player1.playGame( ));
+            }
         }
-        printBoard();
     }
     public void player2Game(){
-        try {
-            play(player2.playGame());
-            printBoard();
-        }catch (InvalidCellNumberException | InvalidNumberException exception){
-            System.out.println(exception.getMessage());
-            player2Game();
+        boolean condition = true;
+        while(condition){
+            try{
+                play(player2.playGame( ));
+                printBoard( );
+                condition = false;
+            }catch( InvalidCellNumberException|CellOccupiedException|InvalidNumberException exception ){
+                System.out.println(exception.getMessage( ));
+                play(player2.playGame( ));
+            }
         }
     }
     public void game(){
