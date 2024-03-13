@@ -73,10 +73,12 @@ private int getCycleLength(){
     public String toString(){
      return String.format("""
              According to the details provided::
+             Next Flow Starts: %s
+             Next Flow Ends : %s
+             Ovulation Date : %s
              
              
-             
-             """)
+             """);
     }
     public void appMain(){
         date();
