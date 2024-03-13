@@ -30,22 +30,23 @@ public class MenstrualApp {
         try{
             lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
             LocalDate day= LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            date();
             nextFlowStart = day.plusDays(getCycleLength());
             setOvulationDate();
             fertileDayStart = ovulationDate.minusDays(3);
             fertileDayEnd = ovulationDate.plusDays(3);
             return nextFlowStart.toString().replaceAll("-","/");
         }catch(Exception error){
+            System.out.println(error.getMessage());
             throw new InvalidDateException(error.getMessage());
         }
     }
-
-
     public String getNextOvulationDate(){
         return ovulationDate.toString().replaceAll("-", "/");
     }
     private void setOvulationDate(){
-        ovulationDate = lastFlowStop.plusDays((cycleLength/2));
+        int addedValue = (cycleLength/2);
+        ovulationDate = lastFlowStop.plusDays(addedValue);
     }
 
     public void setLastFlowStop(String lastFlowStop){
@@ -79,11 +80,22 @@ public class MenstrualApp {
              Ovulation Date : %s
              Fetile Days is Expected to start on : %s.
              And End on : %s
-             Disclaimer:: This is just an Assumption on the provided Details.
+             Disclaimer:: This is just an Assumption based on the provided Details.
              """, nextFlowStart,getNextOvulationDate(),fertileDayStart,fertileDayEnd);
     }
     public void appMain(){
-        date();
+        try{
+            System.out.println("Enter your age :");
+            int age=scanner.nextInt( );
+            if( age>9 )
+                date( );
+            else{
+                System.out.println("You cannot use this app for now pls because you are an underAge.");
+            }
+        }catch (Exception exception){
+            System.out.println(exception.getMessage( ));
+            appMain();
+        }
 
     }
     public void length(){
