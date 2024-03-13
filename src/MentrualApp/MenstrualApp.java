@@ -9,11 +9,13 @@ import java.util.Date;
 public class MenstrualApp {
     private LocalDate nextFlowStart;
     private LocalDate lastFlowStop;
-
+    private int cycleLength;
+    private LocalDate ovulationDate;
 
 
     public String getNextStart(String lastFlowEndDate, int cycleLength){
         try{
+            this.cycleLength = cycleLength;
             lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
             LocalDate day= LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             nextFlowStart = day.plusDays(cycleLength);
@@ -23,8 +25,12 @@ public class MenstrualApp {
         }
     }
 
+
     public String getNextOvulationDate(){
-        return null;
+        return ovulationDate.toString().replaceAll("-", "/");
+    }
+    private void setOvulationDate(){
+        ovulationDate = lastFlowStop.plusDays((cycleLength/2));
     }
 
     public void setLastFlowStop(String lastFlowStop){
@@ -37,25 +43,4 @@ public class MenstrualApp {
         }
     }
 
-//    private LocalDate lastFlowStop = LocalDate.now();
-//    private LocalDate nextFlowStart = LocalDate.now();
-//
-
-//    public static void main(String[] args) {
-//        String name = "abbey";
-//        String name1 = new String("abbey");
-//        System.out.println(name == name1);
-//        String name3 = "abbey";
-//        System.out.println(name3 == name);
-//        name.replaceAll("a","r");
-//        System.out.println("\n\n\n\n\n\n\n\n\n");
-//        System.out.println("Hi, ABC, good".matches("ABC "));
-//        System.out.println("Hi, ABC, good".matches(".*ABC.*"));
-//        System.out.println("A,B;C".replaceAll(",;", "#"));
-//        System.out.println("A,B;C".replaceAll("[,;]", "#"));
-//        String[] tokens = "A,B;C".split("[,=/-;+]");
-//        for (int i = 0; i < tokens.length; i++)
-//            System.out.print(tokens[i] + "+");
-//        int num = 555_550_000;
-//    }
 }

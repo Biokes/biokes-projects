@@ -36,7 +36,7 @@ public class MenstrualAppCalculatorTest {
         assertThrows(InvalidDateException.class,()->app.getNextStart("1/23/1232",1));
         assertThrows(InvalidDateException.class,()->app.getNextStart("1/023/2032",1));
         assertEquals("2023/03/01",app.getNextStart("22/02/2023",7));
-        assertEquals("",app.getNextOvulationDate());
+        assertEquals("2023/02/26",app.getNextOvulationDate());
     }
 
 }
