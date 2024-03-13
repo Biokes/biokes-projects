@@ -2,6 +2,7 @@ package taskAndAssignments;
 
 public class Turtle{
     private boolean isPenUp=true;
+    private final Direction direction=Direction.EAST;
     public boolean isPenUp(){
         return isPenUp;
     }
@@ -15,6 +16,6 @@ public class Turtle{
     }
 
     public Direction currentDirection(){
-        return null;
+        return direction;
     }
 }

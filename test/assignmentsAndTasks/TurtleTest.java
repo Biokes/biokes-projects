@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import taskAndAssignments.Turtle;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static taskAndAssignments.Direction.EAST;
 
 public class TurtleTest{
@@ -43,6 +42,6 @@ public class TurtleTest{
 
     @Test
     public void test_turtleFacesEast_turtleTurnsLeft(){
-        assertEquals(EAST, pet.currentDirection( ));
+        assertSame(EAST, pet.currentDirection( ));
     }
 }
