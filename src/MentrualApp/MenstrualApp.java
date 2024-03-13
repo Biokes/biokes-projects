@@ -2,6 +2,7 @@ package MentrualApp;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class MenstrualApp {
     private LocalDate nextFlowStart;
@@ -57,6 +58,28 @@ private int getCycleLength(){
             throw new InvalidDateException(error.getMessage());
         }
 
+    }
+    private final Scanner scanner = new Scanner(System.in);
+    public void date(){
+        try{
+            System.out.println("Enter your Last Menstruation End Date(dd/mm/yyyy): ");
+            String date=scanner.next( );
+            setLastFlowStop(date);
+        }catch(InvalidDateException exception){
+            System.out.println();
+            date();
+        }
+    }
+    public String toString(){
+     return String.format("""
+             According to the details provided::
+             
+             
+             
+             """)
+    }
+    public void appMain(){
+        date();
     }
 
 

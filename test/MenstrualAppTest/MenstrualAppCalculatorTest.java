@@ -58,4 +58,5 @@ public class MenstrualAppCalculatorTest {
         assertThrows(IllegalArgumentException.class, ()->app.setCycleLength(-1));
         assertThrows(IllegalArgumentException.class, ()->app.setCycleLength(0));
     }
+
 }
