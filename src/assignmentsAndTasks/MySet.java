@@ -1,6 +1,5 @@
 package assignmentsAndTasks;
 
-import org.junit.jupiter.params.aggregator.ArgumentAccessException;
 
 public class MySet {
     private String[] elements = new String[5];
@@ -20,9 +19,9 @@ public class MySet {
     public String getElement(int index) {
         if(index < 0)throw new IllegalArgumentException("Invalid index");
         if(isEmpty())
-            throw new ArgumentAccessException("Set is empty");
+            throw new IllegalArgumentException("Set is empty");
             if (elements[index]==null) {
-                throw new ArgumentAccessException("Set is empty");
+                throw new IllegalArgumentException("Set is empty");
             }
                 return elements[index];
     }
