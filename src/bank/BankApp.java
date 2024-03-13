@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class BankApp {
     private final Scanner input = new Scanner(System.in);
-    private final Bank bank = new Bank("Zenith Bank.");
+    private final Bank bank = new Bank("MAVEE Bank.");
     private void print(String output){
 
         System.out.println(output);
