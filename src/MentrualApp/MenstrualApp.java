@@ -69,7 +69,7 @@ public class MenstrualApp {
             length();
             System.out.println(this);
         }catch(InvalidDateException exception){
-            System.out.println();
+            System.out.println(exception.getMessage());
             date();
         }
     }
