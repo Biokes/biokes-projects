@@ -107,17 +107,36 @@ public class GameBoard {
             }
         }
     }
+
+    private void tryMove(){
+        try{
+            player1Game( );
+        }catch(Exception exception){
+            System.out.println(exception.getMessage());
+            player1Game();
+        }
+    }
     public void game(){
         System.out.println(printBoard());
         for(int counter = 0; counter < 5; counter++){
-            player1Game();
+            try{
+                player1Game( );
+            }catch(Exception exception){
+                System.out.println(exception.getMessage());
+                player1Game();
+            }
             System.out.println(printBoard());
             if( !Objects.equals (result ( ), "") || Objects.equals (result ( ), "Draw") ) {
                 System.out.println(printBoard());
                 System.out.println((result()));
                break;
             }
-            player2Game();
+            try{
+                player2Game( );
+            }catch(Exception exception){
+                System.out.println(exception.getMessage());
+                player2Game();
+            }
             System.out.println(printBoard());
             if( !result ( ).isEmpty ( ) ) {
                 System.out.println((result()));

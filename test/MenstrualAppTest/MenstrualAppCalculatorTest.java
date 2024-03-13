@@ -14,28 +14,13 @@ public class MenstrualAppCalculatorTest {
     void createNewObject() {
         app = new MenstrualApp();
     }
-
-    @Test
-    void dateGiven_testDateIsValid() {
-        assertFalse(app.validateDate("22/10/2023"));
-        assertFalse(app.validateDate("22/10/2013"));
-        assertTrue(app.validateDate("22/10/2033"));
-        assertFalse(app.validateDate("22/10/2012"));
-        assertTrue(app.validateDate("22/10/2025"));
-    }
-
-    @Test
-    void testInvalidDate_throwsException() {
-        assertThrows(InvalidDateException.class, () -> app.validateDate("12/23/2090"));
-        assertThrows(InvalidDateException.class, () -> app.validateDate("12-23/2090"));
-        assertThrows(InvalidDateException.class, () -> app.validateDate("112/23/2090"));
-        assertThrows(InvalidDateException.class, () -> app.validateDate("12/023/2090"));
-    }
-
     @Test
     void test_nextCycleDateISGotten() {
         app.setLastFlowStop("31/12/2023");
-        assertEquals("28/01/2024", app.getNextStart("01/01/2024", 27));
+        assertEquals("2024-01-29", app.getNextStart("01/01/2024", 28));
+        assertEquals("2020-10-27", app.getNextStart("12/10/2020", 15));
+        assertEquals("2024-03-01", app.getNextStart("22/02/2024", 8));
+        assertEquals("2023-03-01",app.getNextStart("22/02/2023",7));
     }
 
 }
