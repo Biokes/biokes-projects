@@ -22,12 +22,14 @@ public void setCycleLength(int days){
             throw new IllegalArgumentException("Invalid cycle length");
     this.cycleLength = days;
 }
-    public String getNextStart(String lastFlowEndDate, int cycleLength){
+private int getCycleLength(){
+        return cycleLength;
+}
+    public String getNextStart(String lastFlowEndDate){
         try{
-            this.cycleLength = cycleLength;
             lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
             LocalDate day= LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            nextFlowStart = day.plusDays(cycleLength);
+            nextFlowStart = day.plusDays(getCycleLength());
             setOvulationDate();
             fertileDayStart = ovulationDate.minusDays(3);
             fertileDayEnd = ovulationDate.plusDays(3);
