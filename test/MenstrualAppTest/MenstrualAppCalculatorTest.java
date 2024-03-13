@@ -18,11 +18,11 @@ public class MenstrualAppCalculatorTest {
     void test_validDate_nextCycleDateISGotten() {
         app.setLastFlowStop("31/12/2023");
         app.setCycleLength(28);
-        assertEquals("2024/01/29", app.getNextStart("01/01/2024"));
+        assertEquals("2024/01/29", app.getNextFlowStart());
         app.setCycleLength(15);
-        assertEquals("2020/10/27", app.getNextStart("12/10/2020"));
+        assertEquals("2020/10/27", app.getNextFlowStart());
         app.setCycleLength(8);
-        assertEquals("2024/03/01", app.getNextStart("22/02/2024"));
+        assertEquals("2024/03/01", app.getNextFlowStart());
         app.setCycleLength(7);
         assertEquals("2023/03/01",app.getNextStart("22/02/2023"));
     }

@@ -10,7 +10,6 @@ public class BankApp {
 
         System.out.println(output);
     }
-
     public void display1(){
         print("Welcome to Zenith Bank PLC.");
         print("""
@@ -20,7 +19,8 @@ public class BankApp {
                 4. check Balance
                 5. Check Account Details
                 6. Deactivate Account
-                7. Exit""");
+                7. Exit
+                Enter your choice :""");
         int choice = input.nextInt();
         switch(choice){
             case 1:

@@ -54,6 +54,7 @@ public class MenstrualApp {
             lastFlowStop.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
             this.lastFlowStop =LocalDate.parse(lastFlowStop, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
            setOvulationDate();
+           getNextFlowStart();
         }catch(Exception error){
             throw new InvalidDateException(error.getMessage());
         }
@@ -87,7 +88,7 @@ public class MenstrualApp {
         try{
             System.out.println("Enter your age :");
             int age=scanner.nextInt( );
-            if( age>9 )
+            if( age>=9)
                 date( );
             else{
                 System.out.println("You cannot use this app for now pls because you are an underAge.");
@@ -109,7 +110,6 @@ public class MenstrualApp {
         }
     }
     public String getNextFlowStart(){
-
         return nextFlowStart.toString().replaceAll("-","/");
     }
 
