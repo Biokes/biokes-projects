@@ -7,15 +7,31 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class MenstrualApp {
-    public void setLastFlowStop(String number2){
+    private LocalDate nextFlowStart;
+    private LocalDate lastFlowStop;
 
-    }
+
 
     public String getNextStart(String lastFlowEndDate, int cycleLength){
         try{
             lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
-            LocalDate day=LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            return day.plusDays(cycleLength).toString( );
+            LocalDate day= LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            nextFlowStart = day.plusDays(cycleLength);
+            return nextFlowStart.toString( ).replaceAll("-","/");
+        }catch(Exception error){
+            throw new InvalidDateException(error.getMessage());
+        }
+    }
+
+    public String getNextOvulationDate(){
+        return null;
+    }
+
+    public void setLastFlowStop(String lastFlowStop){
+        try{
+            lastFlowStop.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
+            LocalDate day= LocalDate.parse(lastFlowStop, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+           this.lastFlowStop = day;
         }catch(Exception error){
             throw new InvalidDateException(error.getMessage());
         }
