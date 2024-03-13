@@ -12,9 +12,13 @@ public class MenstrualApp {
     }
 
     public String getNextStart(String lastFlowEndDate, int cycleLength){
-        lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
-        LocalDate day = LocalDate.parse(lastFlowEndDate,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-       return day.plusDays(cycleLength).toString();
+        try{
+            lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
+            LocalDate day=LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            return day.plusDays(cycleLength).toString( );
+        }catch(Exception error){
+            throw new InvalidDateException(error.getMessage());
+        }
     }
 
 //    private LocalDate lastFlowStop = LocalDate.now();
