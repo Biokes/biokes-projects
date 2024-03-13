@@ -51,8 +51,7 @@ public class MenstrualApp {
     public void setLastFlowStop(String lastFlowStop){
         try{
             lastFlowStop.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
-            LocalDate day= LocalDate.parse(lastFlowStop, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-           this.lastFlowStop = day;
+            this.lastFlowStop =LocalDate.parse(lastFlowStop, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
            setOvulationDate();
         }catch(Exception error){
             throw new InvalidDateException(error.getMessage());
@@ -89,8 +88,7 @@ public class MenstrualApp {
     public void length(){
         try{
             System.out.println("Enter your cycle length: ");
-            int length=scanner.nextInt( );
-            this.cycleLength = length;
+            this.cycleLength =scanner.nextInt( );
         }catch(Exception exception){
             System.out.println(exception.getMessage( ));
             length();
