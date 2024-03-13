@@ -84,6 +84,7 @@ public class MenstrualApp {
     }
     public void appMain(){
         date();
+
     }
     public void length(){
         try{
