@@ -36,7 +36,19 @@ public class MenstrualAppCalculatorTest {
         assertThrows(InvalidDateException.class,()->app.getNextStart("1/23/1232",1));
         assertThrows(InvalidDateException.class,()->app.getNextStart("1/023/2032",1));
         assertEquals("2023/03/01",app.getNextStart("22/02/2023",7));
-        assertEquals("2023/02/26",app.getNextOvulationDate());
+        assertEquals("2023/02/25",app.getNextOvulationDate());
     }
-
+    @Test
+    void test_lastFlowIsCollected_DetailsAreGiven(){
+        assertThrows(InvalidDateException.class,()->app.setLastFlowStop("12/09/89"));
+        app.setLastFlowStop("01/01/2023");
+        assertEquals("2023/01/29",app.getNextStart("01/01/2023",28));
+        assertEquals("2023/01/15",app.getNextOvulationDate());
+        assertEquals("2023/01/12", app.getFertileDayStart());
+        assertEquals("2023/01/18", app.getFertileDayEnd());
+    }
+    @Test
+    void test_InvalidCycleLength_throwsError(){
+        assertThrows(IllegalArgumentException.class, ()->app.setCycleLength(-1));
+    }
 }

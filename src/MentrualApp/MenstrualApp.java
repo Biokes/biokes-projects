@@ -9,20 +9,29 @@ public class MenstrualApp {
     private int cycleLength;
     private LocalDate ovulationDate;
     private LocalDate fertileDayStart;
-    private LocalDate fertileDateEnd;
+    private LocalDate fertileDayEnd;
 
-
-
+    public String getFertileDayStart(){
+        return fertileDayStart.toString( ).replaceAll("-","/");
+    }
+    public String getFertileDayEnd(){
+        return fertileDayEnd.toString( ).replaceAll("-","/");
+    }
+public void setCycleLength(int days){
+        if(days < 1)
+            throw new IllegalArgumentException("Invalid cycle length");
+    this.cycleLength = days;
+}
     public String getNextStart(String lastFlowEndDate, int cycleLength){
         try{
             this.cycleLength = cycleLength;
             lastFlowEndDate.replaceAll("[.,-=+!@#$%^&*()~`]", "/");
             LocalDate day= LocalDate.parse(lastFlowEndDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             nextFlowStart = day.plusDays(cycleLength);
-            ovulationDate = lastFlowStop.minusDays((cycleLength/2));
-            fertileDayStart = ovulationDate.plusDays(-3);
-            fertileDayStart = ovulationDate.plusDays(3);
-            return nextFlowStart.toString( ).replaceAll("-","/");
+            setOvulationDate();
+            fertileDayStart = ovulationDate.minusDays(3);
+            fertileDayEnd = ovulationDate.plusDays(3);
+            return nextFlowStart.toString().replaceAll("-","/");
         }catch(Exception error){
             throw new InvalidDateException(error.getMessage());
         }
@@ -45,6 +54,8 @@ public class MenstrualApp {
         }catch(Exception error){
             throw new InvalidDateException(error.getMessage());
         }
+
     }
+
 
 }
