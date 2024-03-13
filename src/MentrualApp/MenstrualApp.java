@@ -93,7 +93,8 @@ public class MenstrualApp {
                 System.out.println("You cannot use this app for now pls because you are an underAge.");
             }
         }catch (Exception exception){
-            System.out.println(exception.getMessage( ));
+            scanner.next();
+            System.out.println("invalid input");
             appMain();
         }
 
@@ -106,6 +107,10 @@ public class MenstrualApp {
             System.out.println(exception.getMessage( ));
             length();
         }
+    }
+    public String getNextFlowStart(){
+
+        return nextFlowStart.toString().replaceAll("-","/");
     }
 
 }
