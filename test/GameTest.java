@@ -1,12 +1,12 @@
 import game.Game;
 import game.GamePlayer;
-import org.junit.Before;
+import game.WinnerExistException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static game.Cell.EMPTY;
-import static game.Cell.X;
+import static game.Cell.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GameTest{
     private Game game;
@@ -27,5 +27,32 @@ public class GameTest{
         GamePlayer player1=new GamePlayer( );
         player1.play(game, 4);
         assertEquals(X, game.check(1, 0));
+    }
+
+    @Test
+    void test_twoPlayersPlay_cellChanges(){
+        GamePlayer player1=new GamePlayer( );
+        GamePlayer player2=new GamePlayer( );
+        player1.play(game, 4);
+        assertEquals(X, game.check(1, 0));
+        player2.play(game, 1);
+        assertEquals(O, game.check(0, 0));
+    }
+
+    @Test
+    void test_afterPlaysResultToWins_morePlaysThrowsWinnerException(){
+        GamePlayer player1=new GamePlayer( );
+        GamePlayer player2=new GamePlayer( );
+        player1.play(game, 4);
+        assertEquals(X, game.check(1, 0));
+        player2.play(game, 1);
+        assertEquals(O, game.check(0, 0));
+        player1.play(game, 5);
+        assertEquals(X, game.check(1, 1));
+        player2.play(game, 2);
+        assertEquals(O, game.check(0, 1));
+        player1.play(game, 4);
+        assertEquals(X, game.check(1, 0));
+        assertThrows(WinnerExistException.class, ()->player2.play(game, 9));
     }
 }

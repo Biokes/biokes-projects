@@ -27,7 +27,11 @@ public class Game{
     }
 
     public void play(int[] position){
-        count++;
         board[position[0]][position[1]]=button( );
+        count++;
+    }
+
+    private void checkWinner(){
+
     }
 }
