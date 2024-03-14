@@ -10,6 +10,7 @@ public class Turtle{
     private int[][] board=new int[20][20];
     private int row=0;
     private int column=0;
+    private boolean isLeft=true;
 
     public boolean isPenUp(){
         return isPenUp;
@@ -29,14 +30,15 @@ public class Turtle{
 
     public void turnLeft(){
         direction=direction.turnLeft( );
+        isLeft=true;
     }
 
     public void turnRight(){
         direction=direction.turnRight( );
+        isLeft=false;
     }
 
     public void move(int size){
-        boolean isLeft=true;
         if( isLeft )
             for( int counter=0; counter<size; counter++ ){
                 board[row][column++]=1;
