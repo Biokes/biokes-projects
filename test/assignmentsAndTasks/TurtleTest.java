@@ -92,6 +92,5 @@ public class TurtleTest{
         pet.turnRight( );
         pet.turnRight( );
         assertSame(WEST, pet.currentDirection( ));
-
     }
 }
