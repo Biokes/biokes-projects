@@ -60,13 +60,15 @@ public class DiaryMain {
     }
 
     private void homePage(){
-        String choice=input("Welcome\n1. Create new Diary.\n2. Find Diary By username\n3.Exit.");
+        String choice=input("Welcome\n1. Create new Diary.\n2. Find Diary By username\n3. Delete Diary\n4.Exit.");
         switch(choice){
             case "1":
                 createNewDiary();
             case "2":
                 findDiaryByUserName( );
             case "3":
+                deleteDiary( );
+            case "4":
                 print("GoodBye.");
                 System.exit(0);
             default:
@@ -74,7 +76,6 @@ public class DiaryMain {
                     }
 
     }
-
     private void createEntry(){
         String title;
         String body;
@@ -90,7 +91,6 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-
     private void updateEntry(){
         try {
                 String password = input("enter password");
@@ -115,7 +115,6 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-
     private void deleteEntry(){
         try {
             String password=input("Enter password");
@@ -129,7 +128,6 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-
     private void diaryMenu(){
         String option = input("1. create Entry\n2. Update Entry\n3. Delete Entry\n4. Main menu\n5. Exit");
         switch(option){
