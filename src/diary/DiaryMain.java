@@ -54,10 +54,11 @@ public class DiaryMain {
                     }
 
     }
-    private static int askToLock(){
 
-        return JOptionPane.showInternalConfirmDialog(null,"Lock Diary");
-    }
+    //    private static int askToLock(){
+//
+//        return JOptionPane.showInternalConfirmDialog(null,"Lock Diary");
+//    }
     private static void createEntry(){
         String title;
         String body;
@@ -65,9 +66,8 @@ public class DiaryMain {
             title = input("Enter Entry Title");
             body = input("write what you want to keep in your diary");
             print(String.format("Entry Details.\n%s",diary.createEntry(title,body)));
-            int choice = askToLock();
-            if(choice == 0)
-                diary.lockDiary();
+            diary.lockDiary( );
+            print("Diary is locked.");
             diaryMenu();
         } catch (IllegalArgumentException e) {
             print(e.getMessage());
@@ -76,7 +76,6 @@ public class DiaryMain {
     }
     private static void updateEntry(){
         try {
-            if (diary.isLocked()) {
                 String password = input("enter password");
                 diary.unlockDiary(password);
                 int id = Integer.parseInt(input("Enter Entry id"));
@@ -85,17 +84,6 @@ public class DiaryMain {
                 diary.updateEntry(id, title, body);
                 diary.lockDiary();
                 diaryMenu();
-            }
-            int id = Integer.parseInt(input("Enter Entry id"));
-            String title = input("update  Entry Title");
-            String body = input("write what you want to keep in your diary");
-            diary.updateEntry(id, title, body);
-            int choice = JOptionPane.showInternalConfirmDialog(null,"lock diary?");
-            if(choice ==0)
-                diary.lockDiary();
-            diaryMenu();
-
-
         } catch (IllegalArgumentException illegalArgumentException) {
             print("you entered a wrong command");
             diaryMenu();
