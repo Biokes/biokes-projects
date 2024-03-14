@@ -118,7 +118,7 @@ public class TurtleTest{
     public void test_moveForward_sketchPadDraw(){
         pet.penDown( );
         pet.move(5);
-        for( int counter=0; counter<5; )
+        for( int counter=0; counter<5; counter++ )
             assertEquals(1, pet.checkBoard(0, counter));
 
     }
