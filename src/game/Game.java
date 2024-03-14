@@ -1,4 +1,7 @@
 package game;
+
+import TicTacToe.CellOccupiedException;
+
 import static game.Cell.*;
 
 public class Game{
@@ -27,6 +30,8 @@ public class Game{
     public void play(int[] position){
         if( checkWinner( )!=null||boardIsFull( ) )
             throw new WinnerExistException("There is a winner already");
+        if( check(position[0], position[1])!=EMPTY )
+            throw new CellOccupiedException( );
         board[position[0]][position[1]]=button( );
         count++;
     }

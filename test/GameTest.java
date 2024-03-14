@@ -1,3 +1,4 @@
+import TicTacToe.CellOccupiedException;
 import game.Game;
 import game.GamePlayer;
 import game.WinnerExistException;
@@ -54,5 +55,17 @@ public class GameTest{
         player1.play(game, 6);
         assertEquals(X, game.check(1, 2));
         assertThrows(WinnerExistException.class, ()->player2.play(game, 9));
+    }
+
+    @Test
+    void testPlayerPlayOnACellTwice_throwException(){
+        GamePlayer player1=new GamePlayer( );
+        GamePlayer player2=new GamePlayer( );
+        player1.play(game, 4);
+        assertEquals(X, game.check(1, 0));
+        player2.play(game, 1);
+        assertEquals(O, game.check(0, 0));
+        assertThrows(CellOccupiedException.class, ()->player1.play(game, 4));
+        assertThrows(CellOccupiedException.class, ()->player2.play(game, 1));
     }
 }
