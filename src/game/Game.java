@@ -1,7 +1,4 @@
 package game;
-
-import static TicTacToe.CellDisplays.O;
-import static TicTacToe.CellDisplays.X;
 import static game.Cell.*;
 
 public class Game{
