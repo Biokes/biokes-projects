@@ -30,7 +30,11 @@ public class Turtle{
         direction=direction.turnRight( );
     }
 
-    public void move(){
+    public void move(int movementpace){
 
+    }
+
+    public int checkBoard(int i, int counter){
+        return 0;
     }
 }
