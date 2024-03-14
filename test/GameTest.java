@@ -71,7 +71,7 @@ public class GameTest{
     }
 
     @Test
-    void test_PlayersEntersInvalidMove_exceptionIsThrown(){
+    void test_PlayerEntersInvalidMove_exceptionIsThrown(){
         GamePlayer player1=new GamePlayer( );
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, -1));
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 90));
