@@ -1,5 +1,7 @@
 package assignmentsAndTasks;
 
+import java.util.Objects;
+
 public class MyStack <T> {
     private final String [] stack ;
     private int nextVacant = 0;
@@ -35,9 +37,9 @@ public class MyStack <T> {
         stack[nextVacant-1] = null;
     }
 
-    public Object search(String name){
+    public Object search(T name){
         for(int count = nextVacant-1; count-- > 0;){
-            if(name.equals(stack[count]))
+            if( Objects.equals(stack[count], name) )
                 return count+1;
         }
         return String.format("%s not found",name);

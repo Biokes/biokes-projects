@@ -66,16 +66,14 @@ public class MySet {
     }
     private String[] copyElements(String [] inputArray){
         int counter = 0;
-        for(int number = 0; number < inputArray.length; number++ ){
-            if(inputArray[number]== null)
+        for( String value : inputArray ){
+            if( value==null )
                 break;
             counter++;
         }
-        String output[] = new String[counter];
+        String[] output=new String[counter];
 
-        for(int count = 0; count < counter; count++){
-            output[count] = inputArray[count];
-        }
+        System.arraycopy(inputArray, 0, output, 0, counter);
         return output;
     }
 }
