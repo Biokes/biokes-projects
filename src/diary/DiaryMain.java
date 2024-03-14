@@ -54,11 +54,6 @@ public class DiaryMain {
                     }
 
     }
-
-    //    private static int askToLock(){
-//
-//        return JOptionPane.showInternalConfirmDialog(null,"Lock Diary");
-//    }
     private static void createEntry(){
         String title;
         String body;
@@ -83,6 +78,7 @@ public class DiaryMain {
                 String body = input("write what you want to keep in your diary");
                 diary.updateEntry(id, title, body);
                 diary.lockDiary();
+            print("Diary id Locked.");
                 diaryMenu();
         } catch (IllegalArgumentException illegalArgumentException) {
             print("you entered a wrong command");
@@ -99,16 +95,11 @@ public class DiaryMain {
     }
     private static void deleteEntry() {
         try {
+            String password=input("Enter password");
+            diary.unlockDiary(password);
             int id = Integer.parseInt(input("Enter id of Entry to delete"));
-            if(diary.isLocked()){
-                String password = input("Enter password to delete");
-                diary.unlockDiary(password);
                 diary.deleteEntry(id);
                 diary.lockDiary();
-                diaryMenu();
-            }
-            diary.deleteEntry(id);
-            diary.lockDiary();
             diaryMenu();
         }catch(Exception exception){
             print(exception.getMessage());
