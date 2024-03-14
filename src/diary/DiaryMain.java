@@ -8,7 +8,7 @@ public class DiaryMain {
 
     private boolean validate(String name){
 
-        return name.isBlank();
+        return name.isBlank( )||name.isEmpty( );
     }
 
     private String[] prompt(){
