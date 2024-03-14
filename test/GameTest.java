@@ -51,8 +51,8 @@ public class GameTest{
         assertEquals(X, game.check(1, 1));
         player2.play(game, 2);
         assertEquals(O, game.check(0, 1));
-        player1.play(game, 4);
-        assertEquals(X, game.check(1, 0));
+        player1.play(game, 6);
+        assertEquals(X, game.check(1, 2));
         assertThrows(WinnerExistException.class, ()->player2.play(game, 9));
     }
 }
