@@ -6,7 +6,7 @@ import taskAndAssignments.Turtle;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
-import static taskAndAssignments.Direction.EAST;
+import static taskAndAssignments.Direction.*;
 
 public class TurtleTest{
 
@@ -44,4 +44,20 @@ public class TurtleTest{
     public void test_turtleFacesEast_turtleTurnsLeft(){
         assertSame(EAST, pet.currentDirection( ));
     }
+
+    @Test
+    public void test_turtleFaceNorth_turtleTurnsRight(){
+        assertSame(EAST, pet.currentDirection( ));
+        pet.turnLeft( );
+        assertSame(NORTH, pet.currentDirection( ));
+    }
+
+    @Test
+    public void test_turtleFaceNorth_turtleTurnLeft(){
+        assertSame(EAST, pet.currentDirection( ));
+        pet.turnLeft( );
+        pet.turnLeft( );
+        assertSame(WEST, pet.currentDirection( ));
+    }
+
 }

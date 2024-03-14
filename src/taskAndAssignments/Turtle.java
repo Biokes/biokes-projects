@@ -1,8 +1,10 @@
 package taskAndAssignments;
 
+import static taskAndAssignments.Direction.*;
+
 public class Turtle{
     private boolean isPenUp=true;
-    private final Direction direction=Direction.EAST;
+    private Direction direction=EAST;
     public boolean isPenUp(){
         return isPenUp;
     }
@@ -17,5 +19,9 @@ public class Turtle{
 
     public Direction currentDirection(){
         return direction;
+    }
+
+    public void turnLeft(){
+        if( currentDirection( )==EAST ) direction=NORTH;
     }
 }
