@@ -1,19 +1,33 @@
 package game;
 
-import java.util.Arrays;
-
-import static game.Cell.EMPTY;
+import static game.Cell.*;
 
 public class Game{
     private final Enum[][] board=new Enum[3][3];
-    public Enum check(int row, int column){
+    private int count;
 
+    public Game(){
+        fillBoard( );
+        count=0;
+    }
+    public Enum check(int row, int column){
         return board[row][column];
     }
 
     private void fillBoard(){
-        for( Enum[] value : board )
-            for( Enum column : value )
-                column=EMPTY;
+        for( int counter=0; counter<3; counter++ )
+            for( int count=0; count<3; count++ )
+                board[counter][count]=EMPTY;
+    }
+
+    private Enum button(){
+        if( count%2==0 )
+            return X;
+        return O;
+    }
+
+    public void play(int[] position){
+        count++;
+        board[position[0]][position[1]]=button( );
     }
 }
