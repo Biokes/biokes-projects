@@ -116,6 +116,6 @@ public class TurtleTest{
 
     @Test
     public void test_moveForward_sketchPadDraw(){
-        Board board=new Board( );
+        pet.move( );
     }
 }

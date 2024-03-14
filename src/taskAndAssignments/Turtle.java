@@ -5,6 +5,7 @@ import static taskAndAssignments.Direction.*;
 public class Turtle{
     private boolean isPenUp=true;
     private Direction direction=EAST;
+    private int[][] board=new int[20][20];
     public boolean isPenUp(){
         return isPenUp;
     }
