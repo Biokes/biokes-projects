@@ -3,11 +3,15 @@ package diary;
 import javax.swing.*;
 
 public class DiaryMain {
-    private static boolean validate(String name){
+    private final Diaries diaries=new Diaries( );
+    private Diary diary;
+
+    private boolean validate(String name){
 
         return name.isBlank();
     }
-    private static String[] prompt(){
+
+    private String[] prompt(){
         String name = input("welcome\nEnter your name ");
         String password= input("enter preferred password");
         String [] returnValue = new String[2];
@@ -15,17 +19,18 @@ public class DiaryMain {
         returnValue[1] = password;
         return returnValue;
     }
-    private static final Diaries diaries = new Diaries();
-    private static Diary diary;
-    public static void print(String output){
+
+    public void print(String output){
 
         JOptionPane.showMessageDialog(null,output);
     }
-    public static String input(String output){
+
+    public String input(String output){
 
         return JOptionPane.showInputDialog(null,output);
     }
-    private static void createNewDiary(){
+
+    private void createNewDiary(){
         String [] nameAndPassword = prompt();
         if(validate(nameAndPassword[0]) || validate(nameAndPassword[1])){
             print("Name or password cannot be blank.");
@@ -41,7 +46,8 @@ public class DiaryMain {
 
         homePage();
     }
-    private static void homePage(){
+
+    private void homePage(){
         String choice = input("Welcome\n1. Create new Diary.\n2. Exit.");
         switch(choice){
             case "1":
@@ -54,7 +60,8 @@ public class DiaryMain {
                     }
 
     }
-    private static void createEntry(){
+
+    private void createEntry(){
         String title;
         String body;
         try {
@@ -69,7 +76,8 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-    private static void updateEntry(){
+
+    private void updateEntry(){
         try {
                 String password = input("enter password");
                 diary.unlockDiary(password);
@@ -93,7 +101,8 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-    private static void deleteEntry() {
+
+    private void deleteEntry(){
         try {
             String password=input("Enter password");
             diary.unlockDiary(password);
@@ -106,7 +115,8 @@ public class DiaryMain {
             diaryMenu();
         }
     }
-    private static void diaryMenu(){
+
+    private void diaryMenu(){
         String option = input("1. create Entry\n2. Update Entry\n3. Delete Entry\n4. Main menu\n5. Exit");
         switch(option){
             case "1":
