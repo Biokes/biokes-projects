@@ -29,4 +29,8 @@ public class Turtle{
     public void turnRight(){
         direction=direction.turnRight( );
     }
+
+    public void move(){
+
+    }
 }

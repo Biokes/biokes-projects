@@ -116,6 +116,7 @@ public class TurtleTest{
 
     @Test
     public void test_moveForward_sketchPadDraw(){
+        pet.penDown( );
         pet.move( );
     }
 }
