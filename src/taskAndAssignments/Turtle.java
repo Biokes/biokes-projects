@@ -50,6 +50,11 @@ public class Turtle{
     }
 
     public String toString(){
-        return Arrays.toString(this.board);
+        StringBuilder output=new StringBuilder( );
+        for( int[] numbers : board ){
+            output.append(Arrays.toString(numbers));
+            output.append("\n");
+        }
+        return String.valueOf(output);
     }
 }

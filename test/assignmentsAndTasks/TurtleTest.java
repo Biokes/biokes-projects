@@ -129,11 +129,13 @@ public class TurtleTest{
         pet.move(5);
         for( int counter=0; counter<5; counter++ )
             assertEquals(1, pet.checkBoard(0, counter));
+        System.out.println(pet.toString( ));
         pet.turnRight( );
         pet.move(5);
+        System.out.println(pet.toString( ));
         for( int counter=0; counter<5; counter++ )
             assertEquals(1, pet.checkBoard(4, counter));
-        pet.board( );
+        System.out.println(pet.toString( ));
     }
 
 }
