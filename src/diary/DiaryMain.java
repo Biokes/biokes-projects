@@ -47,16 +47,30 @@ public class DiaryMain {
         main.homePage( );
     }
 
+    private void findDiaryByUserName(){
+        try{
+            String username=input("Enter Diary Username");
+            this.diary=diaries.findByUserName(username);
+            diaryMenu( );
+        }catch( DiaryNotFoundException diaryNotfound ){
+            print("Invalid username\nUserName Does not match any Existing Diary UserName.");
+            homePage( );
+        }
+
+    }
+
     private void homePage(){
-        String choice = input("Welcome\n1. Create new Diary.\n2. Exit.");
+        String choice=input("Welcome\n1. Create new Diary.\n2. Find Diary By username\n3.Exit.");
         switch(choice){
             case "1":
                 createNewDiary();
             case "2":
+                findDiaryByUserName( );
+            case "3":
                 print("GoodBye.");
                 System.exit(0);
             default:
-                diaryMenu();
+                homePage( );
                     }
 
     }
@@ -134,5 +148,4 @@ public class DiaryMain {
         }
 
     }
-//    StringBuilder
 }
