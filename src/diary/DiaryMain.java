@@ -47,6 +47,21 @@ public class DiaryMain {
         main.homePage( );
     }
 
+    private void deleteDiary(){
+        try{
+            String username=input("Enter Diary Username");
+            String password=input("Enter password");
+            this.diary=diaries.findByUserName(username);
+            diaries.delete(username, password);
+            diaryMenu( );
+        }catch( DiaryNotFoundException diaryNotfound ){
+            print("Invalid username\nUserName Does not match any Existing Diary UserName.");
+            homePage( );
+        }catch( IncorrectPasswordException error ){
+            print(error.getMessage( ));
+            homePage( );
+        }
+    }
     private void findDiaryByUserName(){
         try{
             String username=input("Enter Diary Username");
