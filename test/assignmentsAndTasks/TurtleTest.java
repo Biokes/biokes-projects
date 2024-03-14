@@ -78,4 +78,8 @@ public class TurtleTest{
         pet.turnLeft( );
         assertSame(EAST, pet.currentDirection( ));
     }
+
+    @Test
+    void testTurtleTurnRight_turtleFacesSouth(){
+    }
 }
