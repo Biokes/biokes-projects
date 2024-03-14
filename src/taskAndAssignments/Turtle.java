@@ -7,6 +7,8 @@ public class Turtle{
     private Direction direction=EAST;
     private int[][] board=new int[20][20];
     private int row=0;
+    private int column=0;
+
     public boolean isPenUp(){
         return isPenUp;
     }
@@ -32,10 +34,15 @@ public class Turtle{
     }
 
     public void move(int size){
-        for( int counter=0; counter<size; counter++ )
-            board[row][counter]=1;
+        boolean isLeft=true;
+        if( isLeft )
+            for( int counter=0; counter<size; counter++ ){
+                board[row][column++]=1;
+            }
+        if( !isLeft )
+            for( int counter=0; counter<size; counter++ )
+                board[row++][column]=1;
     }
-
     public int checkBoard(int row, int counter){
         return board[row][counter];
     }
