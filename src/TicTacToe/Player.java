@@ -9,11 +9,12 @@ public class Player {
     }
     private static int id =1;
     private Scanner input = new Scanner(System.in);
-    private String name(){
+
+    private String getName(){
         return this.name;
     }
     public int playGame() {
-        System.out.println(""+name()+ " Enter where you want to play: ");
+        System.out.println("  "+getName( )+" Enter where you want to play: ");
         int  choice =  input.nextInt();
         return choice;
     }

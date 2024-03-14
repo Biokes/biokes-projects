@@ -7,9 +7,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 public class EcommerceTest {
-    Customer customer = new Customer ("name", 12, "email@gmail.com","address","password","12345678");
+    private Customer customer;
     @BeforeEach
     void newUser(){
+
         customer= new Customer ("name", 12, "email@gmail.com","address","password","12345678");
     }
 
@@ -61,7 +62,6 @@ public class EcommerceTest {
         customer.removeItem(GROCERIES,"food");
         assertEquals(2, customer.getNumberOfCartItems ());
     }
-
     @Test
     void test_userAddBillingInfo_BillingInfoIsAdded(){
         customer.addBillingInfo(new BillingInfo("0909897", "name", new Address("12",

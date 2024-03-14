@@ -107,15 +107,6 @@ public class GameBoard {
             }
         }
     }
-
-    private void tryMove(){
-        try{
-            player1Game( );
-        }catch(Exception exception){
-            System.out.println(exception.getMessage());
-            player1Game();
-        }
-    }
     public void game(){
         System.out.println(printBoard());
         for(int counter = 0; counter < 5; counter++){
