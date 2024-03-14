@@ -14,14 +14,14 @@ private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
         this.name = name;
     }
 
-    public String getName()
-    {
+    public String getName(){
 
         return this.name;
     }
 
 
-    public int getNumberOfCartItems() {
+    public int getNumberOfCartItems(){
+
         return listOfItems.size();
     }
     public void addItem(ProductCategory category, String itemName){
