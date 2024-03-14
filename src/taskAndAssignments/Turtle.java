@@ -49,7 +49,7 @@ public class Turtle{
         return board[row][counter];
     }
 
-    public String board(){
+    public String toString(){
         return Arrays.toString(this.board);
     }
 }
