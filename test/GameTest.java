@@ -1,6 +1,7 @@
 import game.Game;
 import org.junit.jupiter.api.Test;
 
+import static game.Cell.EMPTY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameTest{
