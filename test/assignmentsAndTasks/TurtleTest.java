@@ -125,7 +125,13 @@ public class TurtleTest{
 
     @Test
     public void test_moveLeftMoveRightPenDown_borardValueIsChanged(){
-
+        pet.penDown( );
+        pet.move(5);
+        pet.turnRight( );
+        for( int counter=0; counter<5; counter++ )
+            assertEquals(1, pet.checkBoard(0, counter));
+        for( int counter=0; counter<5; counter++ )
+            assertEquals(1, pet.checkBoard(4, counter));
     }
 
 }
