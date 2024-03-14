@@ -1,5 +1,7 @@
 package taskAndAssignments;
 
+import java.util.Arrays;
+
 import static taskAndAssignments.Direction.*;
 
 public class Turtle{
@@ -45,5 +47,9 @@ public class Turtle{
     }
     public int checkBoard(int row, int counter){
         return board[row][counter];
+    }
+
+    public String board(){
+        return Arrays.toString(this.board);
     }
 }
