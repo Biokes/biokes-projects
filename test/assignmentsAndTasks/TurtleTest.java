@@ -93,4 +93,23 @@ public class TurtleTest{
         pet.turnRight( );
         assertSame(WEST, pet.currentDirection( ));
     }
+
+    @Test
+    public void test_turtleTurnsRight_turtleFacesNorth(){
+        assertSame(EAST, pet.currentDirection( ));
+        pet.turnRight( );
+        pet.turnRight( );
+        pet.turnRight( );
+        assertSame(NORTH, pet.currentDirection( ));
+    }
+
+    @Test
+    public void test_turtleTurnsRight_turtleFacesEast(){
+        assertSame(EAST, pet.currentDirection( ));
+        pet.turnRight( );
+        pet.turnRight( );
+        pet.turnRight( );
+        pet.turnRight( );
+        assertSame(EAST, pet.currentDirection( ));
+    }
 }
