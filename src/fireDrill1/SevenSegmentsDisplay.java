@@ -52,7 +52,6 @@ public class SevenSegmentsDisplay {
         if(number.length() != 8)
             throw new InvalidNumberException();
     }
-
     public static String segments(String numbers){
         try{
             validate(numbers);

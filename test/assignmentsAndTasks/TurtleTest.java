@@ -2,6 +2,7 @@ package assignmentsAndTasks;
 
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import taskAndAssignments.Board;
 import taskAndAssignments.Turtle;
 
 import static junit.framework.TestCase.assertTrue;
@@ -111,5 +112,10 @@ public class TurtleTest{
         pet.turnRight( );
         pet.turnRight( );
         assertSame(EAST, pet.currentDirection( ));
+    }
+
+    @Test
+    public void test_moveForward_sketchPadDraw(){
+        Board board=new Board( );
     }
 }
