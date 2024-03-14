@@ -1,4 +1,5 @@
 import TicTacToe.CellOccupiedException;
+import TicTacToe.InvalidCellNumberException;
 import game.Game;
 import game.GamePlayer;
 import game.WinnerExistException;
@@ -67,5 +68,16 @@ public class GameTest{
         assertEquals(O, game.check(0, 0));
         assertThrows(CellOccupiedException.class, ()->player1.play(game, 4));
         assertThrows(CellOccupiedException.class, ()->player2.play(game, 1));
+    }
+
+    @Test
+    void test_PlayersEntersInvalidMove_exceptionIsThrown(){
+        GamePlayer player1=new GamePlayer( );
+        assertThrows(InvalidCellNumberException.class, ()->player1.play(game, -1));
+        assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 90));
+        assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 15));
+        assertThrows(InvalidCellNumberException.class, ()->player1.play(game, -9));
+        assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 118));
+        assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 0));
     }
 }
