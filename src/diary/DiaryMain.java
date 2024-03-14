@@ -43,8 +43,8 @@ public class DiaryMain {
     }
 
     public static void main(String[] args){
-
-        homePage();
+        DiaryMain main=new DiaryMain( );
+        main.homePage( );
     }
 
     private void homePage(){
