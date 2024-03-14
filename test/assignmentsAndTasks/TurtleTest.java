@@ -60,4 +60,13 @@ public class TurtleTest{
         assertSame(WEST, pet.currentDirection( ));
     }
 
+    @Test
+    public void test_turtleFaceWest_turtleTurnLeft(){
+        assertSame(EAST, pet.currentDirection( ));
+        pet.turnLeft( );
+        pet.turnLeft( );
+        pet.turnLeft( );
+        assertSame(SOUTH, pet.currentDirection( ));
+    }
+
 }

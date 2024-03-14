@@ -22,6 +22,8 @@ public class Turtle{
     }
 
     public void turnLeft(){
+        if( currentDirection( )==WEST ) direction=SOUTH;
+        if( currentDirection( )==NORTH ) direction=WEST;
         if( currentDirection( )==EAST ) direction=NORTH;
     }
 }
