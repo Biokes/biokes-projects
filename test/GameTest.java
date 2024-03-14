@@ -80,4 +80,66 @@ public class GameTest{
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 118));
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 0));
     }
+
+    @Test
+    void playersPlay_winnerIsDetermined(){
+        GamePlayer player1=new GamePlayer( );
+        GamePlayer player2=new GamePlayer( );
+        player1.play(game, 4);
+        assertEquals(X, game.check(1, 0));
+        player2.play(game, 1);
+        assertEquals(O, game.check(0, 0));
+        player1.play(game, 5);
+        assertEquals(X, game.check(1, 1));
+        player2.play(game, 2);
+        assertEquals(O, game.check(0, 1));
+        player1.play(game, 6);
+        assertEquals(X, game.check(1, 2));
+        assertEquals("Player 1 wins", game.checkWinner( ));
+        game=new Game( );
+        player1.play(game, 1);
+        assertEquals(X, game.check(0, 0));
+        player2.play(game, 4);
+        assertEquals(O, game.check(1, 0));
+        player1.play(game, 2);
+        assertEquals(X, game.check(0, 1));
+        player2.play(game, 5);
+        assertEquals(O, game.check(1, 1));
+        player1.play(game, 9);
+        assertEquals(X, game.check(2, 2));
+        player2.play(game, 6);
+        assertEquals("Player 2 wins.", game.checkWinner( ));
+
+    }
+
+    @Test
+    void test_playersCanWinDiagonally(){
+        GamePlayer player1=new GamePlayer( );
+        GamePlayer player2=new GamePlayer( );
+        player1.play(game, 1);
+        assertEquals(X, game.check(0, 0));
+        player2.play(game, 7);
+        assertEquals(O, game.check(2, 0));
+        player1.play(game, 5);
+        assertEquals(X, game.check(1, 1));
+        player2.play(game, 2);
+        assertEquals(O, game.check(0, 1));
+        player1.play(game, 9);
+        assertEquals(X, game.check(2, 2));
+        assertEquals("Player 1 wins", game.checkWinner( ));
+        game=new Game( );
+        player1.play(game, 7);
+        assertEquals(X, game.check(2, 0));
+        player2.play(game, 1);
+        assertEquals(O, game.check(0, 0));
+        player1.play(game, 3);
+        assertEquals(X, game.check(0, 2));
+        player2.play(game, 5);
+        assertEquals(O, game.check(1, 1));
+        player1.play(game, 8);
+        assertEquals(X, game.check(2, 1));
+        player2.play(game, 9);
+        assertEquals(O, game.check(2, 2));
+        assertEquals("Player 2 wins.", game.checkWinner( ));
+    }
 }

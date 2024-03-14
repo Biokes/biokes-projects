@@ -66,4 +66,26 @@ public class Game{
                     check++;
         return check==0;
     }
+
+    private String stringValue(Enum[] values){
+        StringBuilder output=new StringBuilder("|");
+        for( Enum value : values ){
+            if( value==EMPTY )
+                output.append(String.format(" %s |", " "));
+            if( value==X )
+                output.append(String.format(" %s |", X));
+            if( value==O )
+                output.append(String.format(" %s |", O));
+        }
+        return output.toString( );
+    }
+
+    public String printBoard(){
+        StringBuilder output=new StringBuilder( );
+        for( int count=0; count<3; count++ ){
+            output.append(stringValue(board[count]));
+            output.append("\n");
+        }
+        return output.toString( );
+    }
 }
