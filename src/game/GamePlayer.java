@@ -24,4 +24,8 @@ public class GamePlayer{
         returnValue[1]=(number-1)%3;
         return returnValue;
     }
+
+    public int getNumber(){
+        return this.number;
+    }
 }
