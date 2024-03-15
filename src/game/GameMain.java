@@ -29,7 +29,7 @@ public class GameMain{
             System.out.println("Abormal input.");
             playGameFor(player);
         }catch( InputMismatchException exception ){
-            System.out.println("Wrong input for game.\nPluease Enter the right input.");
+            System.out.println("Wrong input for game.\nPlease Enter the right input.");
             scanner.next( );
             playGameFor(player);
         }catch( CellOccupiedException exception ){
