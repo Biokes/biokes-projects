@@ -49,12 +49,12 @@ public class GameMain{
     }
 
     private void gameMenu(){
-        while(!game.boardIsFull( ))
+        while(!game.boardIsFull( )){
+            validate(player1);
             System.out.println(game.printBoard( ));
-        validate(player1);
-        System.out.println(game.printBoard( ));
-        if( game.checkWinner( )!=null )
-            validate(player2);
-        System.out.println(game.printBoard( ));
+            if( game.checkWinner( )!=null )
+                validate(player2);
+            System.out.println(game.printBoard( ));
+        }
     }
 }
