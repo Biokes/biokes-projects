@@ -6,8 +6,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameMain{
-    private GamePlayer player1=new GamePlayer( );
-    private GamePlayer player2=new GamePlayer( );
+    private GamePlayer player1=new GamePlayer(1);
+    private GamePlayer player2=new GamePlayer(2);
     private Game game=new Game( );
     private Scanner scanner=new Scanner(System.in);
 
@@ -18,19 +18,15 @@ public class GameMain{
         game.gameMenu( );
     }
 
-    private int getCounter(){
-        return (counter++%2)+1;
-    }
-
-    private int collectInput(){
-        System.out.printf("Player %s Enter a number between 1 and 9 to specify where to play: %n", getCounter( ));
+    private int collectInput(int number){
+        System.out.printf("Player %s Enter a number between 1 and 9 to specify where to play: %n", number);
         int number=scanner.nextInt( );
         return number;
     }
 
     private void validate(GamePlayer player){
         try{
-            int number=collectInput( );
+            int number=collectInput(player.getNumber( ));
             player.play(game, number);
         }catch( InputMismatchException exception ){
             System.out.println(exception.getMessage( )+"\nEnter a valid input.");

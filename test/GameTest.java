@@ -26,15 +26,15 @@ public class GameTest{
 
     @Test
     void test_playerPlays_cellChanges(){
-        GamePlayer player1=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
         player1.play(game, 4);
         assertEquals(X, game.check(1, 0));
     }
 
     @Test
     void test_twoPlayersPlay_cellChanges(){
-        GamePlayer player1=new GamePlayer( );
-        GamePlayer player2=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
+        GamePlayer player2=new GamePlayer(2);
         player1.play(game, 4);
         assertEquals(X, game.check(1, 0));
         player2.play(game, 1);
@@ -43,8 +43,8 @@ public class GameTest{
 
     @Test
     void test_afterPlaysResultToWins_morePlaysThrowsWinnerException(){
-        GamePlayer player1=new GamePlayer( );
-        GamePlayer player2=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
+        GamePlayer player2=new GamePlayer(2);
         player1.play(game, 4);
         assertEquals(X, game.check(1, 0));
         player2.play(game, 1);
@@ -60,8 +60,8 @@ public class GameTest{
 
     @Test
     void testPlayerPlayOnACellTwice_throwException(){
-        GamePlayer player1=new GamePlayer( );
-        GamePlayer player2=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
+        GamePlayer player2=new GamePlayer(2);
         player1.play(game, 4);
         assertEquals(X, game.check(1, 0));
         player2.play(game, 1);
@@ -72,7 +72,7 @@ public class GameTest{
 
     @Test
     void test_PlayerEntersInvalidMove_exceptionIsThrown(){
-        GamePlayer player1=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, -1));
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 90));
         assertThrows(InvalidCellNumberException.class, ()->player1.play(game, 15));
@@ -83,8 +83,8 @@ public class GameTest{
 
     @Test
     void playersPlay_winnerIsDetermined(){
-        GamePlayer player1=new GamePlayer( );
-        GamePlayer player2=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
+        GamePlayer player2=new GamePlayer(2);
         player1.play(game, 4);
         assertEquals(X, game.check(1, 0));
         player2.play(game, 1);
@@ -114,8 +114,8 @@ public class GameTest{
 
     @Test
     void test_playersCanWinDiagonally(){
-        GamePlayer player1=new GamePlayer( );
-        GamePlayer player2=new GamePlayer( );
+        GamePlayer player1=new GamePlayer(1);
+        GamePlayer player2=new GamePlayer(2);
         player1.play(game, 1);
         assertEquals(X, game.check(0, 0));
         player2.play(game, 7);
