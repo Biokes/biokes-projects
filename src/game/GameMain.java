@@ -19,8 +19,7 @@ public class GameMain{
     }
 
     private int getCounter(){
-        counter++;
-        return (counter%2)+1;
+        return (counter++%2)+1;
     }
 
     private int collectInput(){
