@@ -10,9 +10,6 @@ public class GameMain{
     private GamePlayer player2=new GamePlayer(2);
     private Game game=new Game( );
     private Scanner scanner=new Scanner(System.in);
-
-    private int counter=0;
-
     public static void main(String[] args){
         GameMain game=new GameMain( );
         game.gameMenu( );
@@ -20,8 +17,8 @@ public class GameMain{
 
     private int collectInput(int number){
         System.out.printf("Player %s Enter a number between 1 and 9 to specify where to play: %n", number);
-        int number=scanner.nextInt( );
-        return number;
+        int numberGiven=scanner.nextInt( );
+        return numberGiven;
     }
 
     private void validate(GamePlayer player){
