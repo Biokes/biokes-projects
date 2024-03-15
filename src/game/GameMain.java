@@ -6,10 +6,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameMain{
-    private GamePlayer player1=new GamePlayer(1);
-    private GamePlayer player2=new GamePlayer(2);
-    private Game game=new Game( );
-    private Scanner scanner=new Scanner(System.in);
+    private final GamePlayer player1=new GamePlayer(1);
+    private final GamePlayer player2=new GamePlayer(2);
+    private final Game game=new Game( );
+    private final Scanner scanner=new Scanner(System.in);
     public static void main(String[] args){
         GameMain game=new GameMain( );
         game.gameMenu( );
