@@ -21,32 +21,32 @@ public class GameMain{
         return numberGiven;
     }
 
-    private void validate(GamePlayer player){
+    private void playGameFor(GamePlayer player){
         try{
             int number=collectInput(player.getNumber( ));
             player.play(game, number);
         }catch( InputMismatchException exception ){
-            System.out.println(exception.getMessage( )+"\nEnter a valid input.");
+            System.out.println(exception.getMessage( ));
             scanner.next( );
-            validate(player);
+            playGameFor(player);
         }catch( CellOccupiedException exception ){
-            System.out.println(exception.getMessage( )+"\nEnter a valid input.");
+            System.out.println(exception.getMessage( ));
             scanner.next( );
-            validate(player);
+            playGameFor(player);
         }catch( IllegalArgumentException exception ){
-            System.out.println(exception.getMessage( )+"\nEnter a valid input.");
+            System.out.println(exception.getMessage( ));
             scanner.next( );
-            validate(player);
+            playGameFor(player);
         }
     }
 
     private void gameMenu(){
-        while(!game.boardIsFull( )){
-            validate(player1);
+        while(!game.isBoardFull( )){
+            playGameFor(player1);
             System.out.println(game.printBoard( ));
             end(game);
             if( game.checkWinner( )!=null )
-                validate(player2);
+                playGameFor(player2);
             System.out.println(game.printBoard( ));
             end(game);
         }

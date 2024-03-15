@@ -28,7 +28,7 @@ public class Game{
         return O;
     }
     public void play(int[] position){
-        if( checkWinner( )!=null||boardIsFull( ) )
+        if( checkWinner( )!=null||isBoardFull( ) )
             throw new WinnerExistException("There is a winner already");
         if( check(position[0], position[1])!=EMPTY )
             throw new CellOccupiedException( );
@@ -58,7 +58,7 @@ public class Game{
         return null;
     }
 
-    public boolean boardIsFull(){
+    public boolean isBoardFull(){
         int check=0;
         for( int counter=0; counter<3; counter++ )
             for( int count=0; count<3; count++ )

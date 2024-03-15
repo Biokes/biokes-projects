@@ -14,7 +14,7 @@ public class GamePlayer{
     }
 
     private void validatePosition(int position){
-        if( position<1||position>9 )
+        if( position<1||position>=10 )
             throw new InvalidCellNumberException( );
     }
 
