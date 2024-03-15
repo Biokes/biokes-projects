@@ -24,10 +24,6 @@ public class GameMain{
         try{
             int number=collectInput(player.getNumber( ));
             player.play(game, number);
-        }catch( IllegalArgumentException exception ){
-            scanner.next( );
-            System.out.println("Abormal input.");
-            playGameFor(player);
         }catch( InputMismatchException exception ){
             System.out.println("Wrong input for game.\nPlease Enter the right input.");
             scanner.next( );
