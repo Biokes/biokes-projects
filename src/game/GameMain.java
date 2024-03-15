@@ -17,19 +17,22 @@ public class GameMain{
 
     private int collectInput(int number){
         System.out.printf("Player %s Enter a number between 1 and 9 to specify where to play: %n", number);
-        int numberGiven=scanner.nextInt( );
-        return numberGiven;
+        return scanner.nextInt( );
     }
 
     private void playGameFor(GamePlayer player){
         try{
             int number=collectInput(player.getNumber( ));
             player.play(game, number);
+        }catch( IllegalArgumentException exception ){
+            scanner.next( );
+            System.out.println("Abormal input.");
+            playGameFor(player);
         }catch( InputMismatchException exception ){
             System.out.println("Wrong input for game.\nPluease Enter the right input.");
             scanner.next( );
             playGameFor(player);
-        }catch( CellOccupiedException|IllegalArgumentException exception ){
+        }catch( CellOccupiedException exception ){
             System.out.println(exception.getMessage( ));
             scanner.next( );
             playGameFor(player);
