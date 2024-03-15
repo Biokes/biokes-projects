@@ -3,6 +3,8 @@ package game;
 import TicTacToe.InvalidCellNumberException;
 
 public class GamePlayer{
+    public GamePlayer(){
+    }
     public void play(Game game, int position){
         validatePosition(position);
         game.play(convertNumber(position));

@@ -1,49 +1,60 @@
 package game;
 
+import TicTacToe.CellOccupiedException;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameMain{
-    private GamePlayer gamePlayer1=new GamePlayer( );
+    private GamePlayer player1=new GamePlayer( );
     private GamePlayer player2=new GamePlayer( );
     private Game game=new Game( );
     private Scanner scanner=new Scanner(System.in);
 
+    private int counter=0;
+
     public static void main(String[] args){
         GameMain game=new GameMain( );
+        game.gameMenu( );
     }
 
-    private int collectInput1(String playerName){
-        System.out.println(String.format("\n%s Enter a number between 1 and 9 to specify where to play: ", playerName));
+    private int getCounter(){
+        counter++;
+        return (counter%2)+1;
+    }
+
+    private int collectInput(){
+        System.out.printf("Player %s Enter a number between 1 and 9 to specify where to play: %n", getCounter( ));
         int number=scanner.nextInt( );
         return number;
     }
 
-    private void validate1(){
+    private void validate(GamePlayer player){
         try{
-            int number=collectInput1("player One");
-            gamePlayer1.play(game, number);
-        }catch( Exception exception ){
+            int number=collectInput( );
+            player.play(game, number);
+        }catch( InputMismatchException exception ){
             System.out.println(exception.getMessage( )+"\nEnter a valid input.");
-            validate1( );
-        }
-    }
-
-    private void validate2(){
-        try{
-            int number=collectInput1("Player two");
-            gamePlayer1.play(game, number);
-        }catch( Exception exception ){
+            scanner.next( );
+            validate(player);
+        }catch( CellOccupiedException exception ){
             System.out.println(exception.getMessage( )+"\nEnter a valid input.");
-            validate2( );
+            scanner.next( );
+            validate(player);
+        }catch( IllegalArgumentException exception ){
+            System.out.println(exception.getMessage( )+"\nEnter a valid input.");
+            scanner.next( );
+            validate(player);
         }
     }
 
     private void gameMenu(){
-        System.out.println(game.printBoard( ));
-        validate1( );
+        while(game.)
+            System.out.println(game.printBoard( ));
+        validate(player1);
         System.out.println(game.printBoard( ));
         if( game.checkWinner( )!=null )
-            validate2( );
+            validate(player2);
         System.out.println(game.printBoard( ));
     }
 }

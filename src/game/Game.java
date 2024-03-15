@@ -22,7 +22,7 @@ public class Game{
                 board[counter][count]=EMPTY;
     }
 
-    private Enum button(){
+    private Enum cell(){
         if( count%2==0 )
             return X;
         return O;
@@ -32,7 +32,7 @@ public class Game{
             throw new WinnerExistException("There is a winner already");
         if( check(position[0], position[1])!=EMPTY )
             throw new CellOccupiedException( );
-        board[position[0]][position[1]]=button( );
+        board[position[0]][position[1]]=cell( );
         count++;
     }
 
@@ -87,5 +87,9 @@ public class Game{
             output.append("\n");
         }
         return output.toString( );
+    }
+
+    public boolean checkDraw(){
+        return boardIsFull( );
     }
 }
