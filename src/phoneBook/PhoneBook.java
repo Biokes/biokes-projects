@@ -45,10 +45,8 @@ public class PhoneBook {
         }
 
     public boolean isNumberValid(String number) {
-        for (int count = 0; count < number.length(); count++) {
-            if (!(number.charAt(count) >= '0' && number.charAt(count) <= '9') || number.isBlank())
+        if( !(number.matches("\\d+")||number.isBlank( )) )
                 return false;
-        }
         return true;
     }
 
@@ -79,7 +77,7 @@ public class PhoneBook {
             phoneNumbers.remove(index);
             contactNames.remove(index);
         }
-        return "Number deleted successfully..👌👌👌👌";
+        return "Number deleted successfully..";
     }
 
     public String[] getContact() {

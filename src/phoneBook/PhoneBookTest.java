@@ -47,11 +47,11 @@ public class PhoneBookTest {
     phoneBook.saveNumber(nameGiven, numberGiven);
     assertEquals(0,phoneBook.searchByName(nameGiven));
     assertEquals(0,phoneBook.searchByNumber(numberGiven));
-    assertEquals("Number deleted successfully..👌👌👌👌", phoneBook.deleteNumber("Abbey"));
+    assertEquals("Number deleted successfully..", phoneBook.deleteNumber("Abbey"));
 }
 @Test
     void testNumberNotSavedCantBeDeleted(){
-    assertEquals("no match to the name entered\uD83D\uDE12\uD83D\uDE12", phoneBook.deleteNumber("Abbey"));
+    assertEquals("no match to the name entered", phoneBook.deleteNumber("Abbey"));
 
 }
 @Test
