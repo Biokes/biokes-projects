@@ -26,7 +26,7 @@ public class GameMain{
             int number=collectInput(player.getNumber( ));
             player.play(game, number);
         }catch( InputMismatchException exception ){
-            System.out.println(exception.getMessage( ));
+            System.out.println("Wrong input for game.\nPluease Enter the right input.");
             scanner.next( );
             playGameFor(player);
         }catch( CellOccupiedException exception ){
@@ -45,8 +45,7 @@ public class GameMain{
             playGameFor(player1);
             System.out.println(game.printBoard( ));
             end(game);
-            if( game.checkWinner( )!=null )
-                playGameFor(player2);
+            playGameFor(player2);
             System.out.println(game.printBoard( ));
             end(game);
         }
