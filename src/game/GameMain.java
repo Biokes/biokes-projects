@@ -1,6 +1,7 @@
 package game;
 
 import TicTacToe.CellOccupiedException;
+import TicTacToe.InvalidCellNumberException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -28,9 +29,8 @@ public class GameMain{
             System.out.println("Wrong input for game.\nPlease Enter the right input.");
             scanner.next( );
             playGameFor(player);
-        }catch( CellOccupiedException exception ){
+        }catch( CellOccupiedException|InvalidCellNumberException exception ){
             System.out.println(exception.getMessage( ));
-            scanner.next( );
             playGameFor(player);
         }
     }
@@ -46,7 +46,6 @@ public class GameMain{
         }
         System.out.println("Its a Draw.");
     }
-
     private void end(Game game){
         if( game.checkWinner( )!=null ){
             System.out.println(game.checkWinner( ));
