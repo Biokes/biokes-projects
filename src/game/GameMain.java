@@ -40,15 +40,23 @@ public class GameMain{
             playGameFor(player1);
             System.out.println(game.printBoard( ));
             end(game);
+            draw(game);
             playGameFor(player2);
             System.out.println(game.printBoard( ));
             end(game);
+            draw(game);
         }
-        System.out.println("Its a Draw.");
     }
     private void end(Game game){
         if( game.checkWinner( )!=null ){
             System.out.println(game.checkWinner( ));
+            System.exit(1000);
+        }
+    }
+
+    private void draw(Game game){
+        if( game.isBoardFull( ) ){
+            System.out.println("The game is a draw.");
             System.exit(1000);
         }
     }
