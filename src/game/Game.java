@@ -58,7 +58,7 @@ public class Game{
         return null;
     }
 
-    private boolean boardIsFull(){
+    public boolean boardIsFull(){
         int check=0;
         for( int counter=0; counter<3; counter++ )
             for( int count=0; count<3; count++ )
@@ -87,9 +87,5 @@ public class Game{
             output.append("\n");
         }
         return output.toString( );
-    }
-
-    public boolean checkDraw(){
-        return boardIsFull( );
     }
 }
