@@ -52,9 +52,19 @@ public class GameMain{
         while(!game.boardIsFull( )){
             validate(player1);
             System.out.println(game.printBoard( ));
+            end(game);
             if( game.checkWinner( )!=null )
                 validate(player2);
             System.out.println(game.printBoard( ));
+            end(game);
+        }
+        System.out.println("Its a Draw.");
+    }
+
+    private void end(Game game){
+        if( game.checkWinner( )!=null ){
+            System.out.println(game.checkWinner( ));
+            System.exit(1000);
         }
     }
 }
