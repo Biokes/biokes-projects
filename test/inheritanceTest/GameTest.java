@@ -1,3 +1,5 @@
+package inheritanceTest;
+
 import TicTacToe.CellOccupiedException;
 import TicTacToe.InvalidCellNumberException;
 import game.Game;

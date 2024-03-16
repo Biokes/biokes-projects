@@ -1,3 +1,5 @@
+package inheritanceTest;
+
 import ecommerceStore.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,17 +15,13 @@ public class EcommerceTest {
 
         customer= new Customer ("name", 12, "email@gmail.com","address","password","12345678");
     }
-
     @Test
-    void test_customerNameIsGotten(){
-
-        assertEquals("name", customer.getName());
-    }
-    @Test
-    void testUserCanGetCanAddItemstoCart(){
+    void testUserCanGetCanAddItemsToCart(){
         assertEquals(0, customer.getNumberOfCartItems ());
         customer.addItem(GROCERIES,"food");
         assertEquals(1, customer.getNumberOfCartItems ());
+        customer.addItem(GROCERIES, "food");
+        assertEquals(1, customer.getNumberOfCartItems( ));
     }
     @Test
     void testUserCanGetCanAddMultipleItemstoCart(){

@@ -13,7 +13,6 @@ private final HashMap<ProductCategory, String> listOfItems= new HashMap<>();
     public User(String name, int age, String mail, String address, String password, String number) {
         this.name = name;
     }
-
     public String getName(){
 
         return this.name;
