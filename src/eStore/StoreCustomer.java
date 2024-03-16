@@ -10,7 +10,7 @@ public class StoreCustomer{
 
     public void removeItem(Cart cart, StoreItem itemName){
         for( int counter=0; counter<cart.numberOfItems( ); counter++ )
-            if( itemName.getProductType( ).equals(cart.getItem(counter.getType( ))) )
+            if( itemName.equals(cart.getItem(counter).getProductName( )) )
                 if( item.getName( ).equals(counter.getName( )) )
                     cart.removeItem( )
 

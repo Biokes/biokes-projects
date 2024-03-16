@@ -11,6 +11,11 @@ public class Cart{
     }
 
     public int numberOfItems(){
+
         return cart.size( );
+    }
+
+    public StoreItem getItem(int index){
+        return cart.get(index);
     }
 }
