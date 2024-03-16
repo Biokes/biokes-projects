@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PhoneTest{
     private Phone phone=new Phone( );
-
     @BeforeEach
     void setUp(){
         phone=new Phone( );
