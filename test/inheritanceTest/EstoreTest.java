@@ -23,11 +23,21 @@ public class EstoreTest{
     }
 
     @Test
-    void customerAddItemsToCart_testItemsAreAdded(){
+    void customerAddItemToCart_testItemsIsAdded(){
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
         customer.addItemToCart(cart, new StoreItem( ));
         assertEquals(1, customer.countItemsInside(cart));
+    }
+
+    @Test
+    void customerAddItemsToCart_testItemsAreAdded(){
+        Cart cart=new Cart( );
+        assertEquals(0, customer.countItemsInside(cart));
+        customer.addItemToCart(cart, new StoreItem( ));
+        customer.addItemToCart(cart, new StoreItem( ));
+        customer.addItemToCart(cart, new StoreItem( ));
+        assertEquals(3, customer.countItemsInside(cart));
 
     }
 
