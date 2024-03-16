@@ -21,7 +21,6 @@ public class EstoreTest{
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
     }
-
     @Test
     void customerAddItemToCart_testItemsIsAdded(){
         Cart cart=new Cart( );
@@ -29,7 +28,6 @@ public class EstoreTest{
         customer.addItemToCart(cart, new StoreItem( ));
         assertEquals(1, customer.countItemsInside(cart));
     }
-
     @Test
     void customerAddItemsToCart_testItemsAreAdded(){
         Cart cart=new Cart( );
@@ -40,5 +38,6 @@ public class EstoreTest{
         assertEquals(3, customer.countItemsInside(cart));
 
     }
+
 
 }
