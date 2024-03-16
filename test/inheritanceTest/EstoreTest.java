@@ -10,12 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EstoreTest{
     private StoreCustomer customer;
-
     @BeforeEach
     void initialize(){
         customer=new StoreCustomer( );
     }
-
     @Test
     void userGetCartInStore_testCartIsEmpty(){
         Cart cart=new Cart( );
@@ -36,8 +34,19 @@ public class EstoreTest{
         customer.addItemToCart(cart, new StoreItem( ));
         customer.addItemToCart(cart, new StoreItem( ));
         assertEquals(3, customer.countItemsInside(cart));
-
     }
 
+    @Test
+    void customerAddItemToCartAndRemoveItem_testItemIsAddedAndremoved(){
+        Cart cart=new Cart( );
+        assertEquals(0, customer.countItemsInside(cart));
+        StoreItem item1=new StoreItem( );
+        customer.addItemToCart(cart, item1);
+        StoreItem item2=new StoreItem( );
+        customer.addItemToCart(cart, item2);
+        assertEquals(3, customer.countItemsInside(cart));
+        customer.removeItem(cart, item2);
+
+    }
 
 }

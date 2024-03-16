@@ -7,4 +7,8 @@ public class StoreCustomer{
     public void addItemToCart(Cart cart, StoreItem item){
         cart.addItem(item);
     }
+
+    public void removeItem(Cart cart, StoreItem itemName){
+
+    }
 }
