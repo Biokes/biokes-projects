@@ -41,12 +41,12 @@ public class EstoreTest{
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
         StoreItem item1=new StoreItem( );
-        customer.addItemToCart(cart, item1);
         StoreItem item2=new StoreItem( );
+        customer.addItemToCart(cart, item1);
         customer.addItemToCart(cart, item2);
-        assertEquals(3, customer.countItemsInside(cart));
+        assertEquals(2, customer.countItemsInside(cart));
         customer.removeItem(cart, item2);
-
+        assertEquals(1, customer.countItemsInside(cart));
     }
 
 }
