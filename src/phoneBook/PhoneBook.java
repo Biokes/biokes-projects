@@ -55,7 +55,7 @@ public class PhoneBook {
         String temp2;
         for (int counter = 0; counter < phoneNumbers.size(); counter++) {
             for (int innerLoop = counter + 1; innerLoop < phoneNumbers.size(); innerLoop++) {
-                if ((contactNames.get(counter)).compareToIgnoreCase((contactNames.get(innerLoop))) > 0) {
+                if( (contactNames.get(counter)).compareToIgnoreCase((contactNames.get(innerLoop)))>0 ){
                     temp = contactNames.get(counter);
                     contactNames.set(counter, contactNames.get(innerLoop));
                     contactNames.set(innerLoop, temp);
@@ -72,7 +72,7 @@ public class PhoneBook {
     public String deleteNumber(String nameToBeDeleted) {
         int index = searchByName(nameToBeDeleted);
         if (index == -1) {
-            return "no match to the name entered\uD83D\uDE12\uD83D\uDE12";
+            return "no match to the name entered";
         } else {
             phoneNumbers.remove(index);
             contactNames.remove(index);
@@ -98,7 +98,7 @@ public class PhoneBook {
                     2. Display numbers
                     3. Delete number
                     4. Exit
-                    ------->>Enter your option: ☺️☺️☺️------->>>""";
+                    ------->>Enter your option:\s""";
             System.out.println(values);
             int optionChoice = input.nextInt();
             switch (optionChoice) {
@@ -125,9 +125,9 @@ public class PhoneBook {
     }
     public void displayContacts() {
         sortNames();
-        for (int iterator = 0; iterator < contactNames.size(); iterator++) {
-            System.out.printf("\nname:   %s\n", contactNames.get(iterator));
-            System.out.printf("telephone: %s", phoneNumbers.get(iterator));
+        for( int count=0; count<contactNames.size( ); count++ ){
+            System.out.printf("\nname:   %s\n", contactNames.get(count));
+            System.out.printf("telephone: %s", phoneNumbers.get(count));
         }
     }
 }
