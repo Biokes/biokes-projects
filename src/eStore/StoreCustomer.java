@@ -31,7 +31,11 @@ public class StoreCustomer{
     }
 
     public void getCartFromStore(){
-        cart=store.giveCart( );
+        if( cart==null ){
+            cart=store.giveCart( );
+            return;
+        }
+        throw new MaximumCartNumberException( );
     }
 
     public void changeProductName(String newName, String oldName){

@@ -71,13 +71,18 @@ public class EstoreTest{
         customer.changeProductType("spoon", ProductsCategory.ELECTRONICS);
         assertTrue(item2.getProductType( )==ProductsCategory.ELECTRONICS);
     }
-
     @Test
     void customerChangesItemName_testItemNameIsChanged(){
         assertEquals(0, customer.countCartItems( ));
         StoreItem items=new StoreItem(ProductsCategory.GROCERIES, "biscuit");
         customer.addItemToCart(items);
         customer.changeProductName("biscuit", "sweets");
+    }
+
+    @Test
+    void customerGetTwoCartFromStore_ExceptioIsThrown(){
+        customer.getCartFromStore( );
+        assertThrows(MaximumCartNumberException.class, ()->customer.getCartFromStore( ));
     }
     //test customer cannot have two carts
     // test customer change number of items in cart
