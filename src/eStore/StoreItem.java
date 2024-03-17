@@ -1,8 +1,8 @@
 package eStore;
 
 public class StoreItem{
-    private final String itemName;
-    private final Enum category;
+    private String itemName;
+    private Enum category;
 
     public StoreItem(ProductsCategory category, String itemName){
         this.category=category;
@@ -15,5 +15,13 @@ public class StoreItem{
 
     public Enum getProductType(){
         return this.category;
+    }
+
+    public void setProductType(ProductsCategory productsCategory){
+        this.category=productsCategory;
+    }
+
+    public void setProductName(String name){
+        this.itemName=name;
     }
 }

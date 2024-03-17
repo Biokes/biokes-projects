@@ -8,71 +8,78 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EstoreTest{
     private StoreCustomer customer;
+    private Estore store;
     @BeforeEach
     void initialize(){
-        customer=new StoreCustomer( );
+        store=new Estore( );
+        customer=new StoreCustomer(store);
+        customer.getCartFromStore( );
     }
     @Test
     void userGetCartInStore_testCartIsEmpty(){
-        Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
+        assertEquals(0, customer.countCartItems( ));
     }
     @Test
     void customerAddItemToCart_testItemsIsAdded(){
-        Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        assertEquals(1, customer.countItemsInside(cart));
+        assertEquals(0, customer.countCartItems( ));
+        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
+        assertEquals(1, customer.countCartItems( ));
     }
     @Test
     void customerAddItemToCartAndRemoveItem_testItemIsAddedAndremoved(){
         Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
+        assertEquals(0, customer.countCartItems( ));
         StoreItem item1=new StoreItem(ProductsCategory.GROCERIES, "name");
         StoreItem item2=new StoreItem(ProductsCategory.CLOTHING, "clothes");
-        customer.addItemToCart(cart, item1);
-        customer.addItemToCart(cart, item2);
-        assertEquals(2, customer.countItemsInside(cart));
-        customer.removeItem(cart, ProductsCategory.CLOTHING, "clothes");
-        assertEquals(1, customer.countItemsInside(cart));
+        customer.addItemToCart(item1);
+        customer.addItemToCart(item2);
+        assertEquals(2, customer.countCartItems( ));
+        customer.removeItem(ProductsCategory.CLOTHING, "clothes");
+        assertEquals(1, customer.countCartItems( ));
     }
-
     @Test
     void customerAddItemsToCart_testItemsAreAdded(){
-        Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        assertEquals(3, customer.countItemsInside(cart));
+        assertEquals(0, customer.countCartItems( ));
+        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
+        assertEquals(3, customer.countCartItems( ));
     }
     @Test
     void customerAddAndRemoveItem_testItemAreAddedAndRemoved(){
         Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
+        assertEquals(0, customer.countCartItems( ));
         StoreItem item1=new StoreItem(ProductsCategory.GROCERIES, "spoon");
         StoreItem item2=new StoreItem(ProductsCategory.UTENSILS, "spoon");
-        customer.addItemToCart(cart, item1);
-        customer.addItemToCart(cart, item2);
-        assertEquals(2, customer.countItemsInside(cart));
-        customer.removeItem(cart, ProductsCategory.UTENSILS, "spoon");
-        assertEquals(1, customer.countItemsInside(cart));
-        assertTrue(customer.checkItem(cart, item1));
+        customer.addItemToCart(item1);
+        customer.addItemToCart(item2);
+        assertEquals(2, customer.countCartItems( ));
+        customer.removeItem(ProductsCategory.UTENSILS, "spoon");
+        assertEquals(1, customer.countCartItems( ));
+        assertTrue(customer.checkItem(item1));
     }
-
     @Test
-    void customerCanRemoveItemThatIsNotCart_testExceptionISThrown(){
-        Cart cart=new Cart( );
-        assertThrows(ItemNotFoundException.class, ()->customer.removeItem(cart, ProductsCategory.CLOTHING, "clothes"));
+    void customerRemoveItemThatIsNotCart_testExceptionISThrown(){
+        assertThrows(ItemNotFoundException.class, ()->customer.removeItem(ProductsCategory.CLOTHING, "clothes"));
     }
 
     @Test
     void customerChangeProductType_testItemProductTypeIsChaged(){
-        Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
+        assertEquals(0, customer.countCartItems( ));
         StoreItem item2=new StoreItem(ProductsCategory.UTENSILS, "spoon");
-        customer.addItemToCart(cart, item2);
-        customer.changeProductType(cart, item2, ProductsCategory.ELECTRONICS);
+        customer.addItemToCart(item2);
+        customer.changeProductType("spoon", ProductsCategory.ELECTRONICS);
         assertTrue(item2.getProductType( )==ProductsCategory.ELECTRONICS);
     }
+
+    @Test
+    void customerChangesItemName_testItemNameIsChanged(){
+        assertEquals(0, customer.countCartItems( ));
+        StoreItem items=new StoreItem(ProductsCategory.GROCERIES, "biscuit");
+        customer.addItemToCart(items);
+        customer.changeProductName("biscuit", "sweets");
+    }
+    //test customer cannot have two carts
+    // test customer change number of items in cart
+    // test customer can give card admin matches customer and seller
 }
