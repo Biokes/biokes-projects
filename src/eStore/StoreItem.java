@@ -12,4 +12,8 @@ public class StoreItem{
     public String getProductName(){
         return this.itemName;
     }
+
+    public Enum getProductType(){
+        return this.category;
+    }
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EstoreTest{
     private StoreCustomer customer;
@@ -46,8 +47,21 @@ public class EstoreTest{
         customer.addItemToCart(cart, item1);
         customer.addItemToCart(cart, item2);
         assertEquals(2, customer.countItemsInside(cart));
-        customer.removeItem(cart, "clothes");
+        customer.removeItemByItemName(cart, "clothes");
         assertEquals(1, customer.countItemsInside(cart));
     }
 
+    @Test
+    void customerAddAndRemoveItem_testItemAreAddedAndRemoved(){
+        Cart cart=new Cart( );
+        assertEquals(0, customer.countItemsInside(cart));
+        StoreItem item1=new StoreItem(ProductsCategory.GROCERIES, "spoon");
+        StoreItem item2=new StoreItem(ProductsCategory.UTENSILS, "spoon");
+        customer.addItemToCart(cart, item1);
+        customer.addItemToCart(cart, item2);
+        assertEquals(2, customer.countItemsInside(cart));
+        customer.removeItemByItemName(cart, "spoon");
+        assertEquals(1, customer.countItemsInside(cart));
+        assertTrue(customer.checkItem(item1));
+    }
 }

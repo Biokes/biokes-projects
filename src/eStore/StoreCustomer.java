@@ -8,7 +8,11 @@ public class StoreCustomer{
         cart.addItem(item);
     }
 
-    public void removeItem(Cart cart, String itemName){
+    public void removeItemByItemName(Cart cart, String itemName){
         cart.remove(itemName);
+    }
+
+    public boolean checkItem(Cart cart, StoreItem item1){
+        cart.checkItem(item1);
     }
 }
