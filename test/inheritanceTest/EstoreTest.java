@@ -1,6 +1,7 @@
 package inheritanceTest;
 
 import eStore.Cart;
+import eStore.ProductsCategory;
 import eStore.StoreCustomer;
 import eStore.StoreItem;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,16 +24,16 @@ public class EstoreTest{
     void customerAddItemToCart_testItemsIsAdded(){
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
-        customer.addItemToCart(cart, new StoreItem( ));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
         assertEquals(1, customer.countItemsInside(cart));
     }
     @Test
     void customerAddItemsToCart_testItemsAreAdded(){
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
-        customer.addItemToCart(cart, new StoreItem( ));
-        customer.addItemToCart(cart, new StoreItem( ));
-        customer.addItemToCart(cart, new StoreItem( ));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
         assertEquals(3, customer.countItemsInside(cart));
     }
 
@@ -40,12 +41,12 @@ public class EstoreTest{
     void customerAddItemToCartAndRemoveItem_testItemIsAddedAndremoved(){
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
-        StoreItem item1=new StoreItem( );
-        StoreItem item2=new StoreItem( );
+        StoreItem item1=new StoreItem(ProductsCategory.GROCERIES, "name");
+        StoreItem item2=new StoreItem(ProductsCategory.CLOTHING, "clothes");
         customer.addItemToCart(cart, item1);
         customer.addItemToCart(cart, item2);
         assertEquals(2, customer.countItemsInside(cart));
-        customer.removeItem(cart, item2);
+        customer.removeItem(cart, "clothes");
         assertEquals(1, customer.countItemsInside(cart));
     }
 
