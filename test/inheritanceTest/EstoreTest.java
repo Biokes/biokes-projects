@@ -1,10 +1,6 @@
 package inheritanceTest;
 
-import eStore.Cart;
-import eStore.ProductsCategory;
-import eStore.StoreCustomer;
-import eStore.StoreItem;
-import ecommerceStore.ItemNotFoundException;
+import eStore.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,5 +64,15 @@ public class EstoreTest{
     void customerCanRemoveItemThatIsNotCart_testExceptionISThrown(){
         Cart cart=new Cart( );
         assertThrows(ItemNotFoundException.class, ()->customer.removeItem(cart, ProductsCategory.CLOTHING, "clothes"));
+    }
+
+    @Test
+    void customerChangeProductType_testItemProductTypeIsChaged(){
+        Cart cart=new Cart( );
+        assertEquals(0, customer.countItemsInside(cart));
+        StoreItem item2=new StoreItem(ProductsCategory.UTENSILS, "spoon");
+        customer.addItemToCart(cart, item2);
+        customer.changeProductType(cart, item2, ProductsCategory.ELECTRONICS);
+        assertTrue(item2.getProductType( )==ProductsCategory.ELECTRONICS);
     }
 }
