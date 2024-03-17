@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EstoreTest{
     private StoreCustomer customer;
-    private Estore store;
+
     @BeforeEach
     void initialize(){
-        store=new Estore( );
+        Estore store=new Estore( );
         customer=new StoreCustomer(store);
         customer.getCartFromStore( );
     }
@@ -22,15 +22,14 @@ public class EstoreTest{
     @Test
     void customerAddItemToCart_testItemsIsAdded(){
         assertEquals(0, customer.countCartItems( ));
-        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(new StoreProduct(ProductsCategory.GROCERIES, "name"));
         assertEquals(1, customer.countCartItems( ));
     }
     @Test
     void customerAddItemToCartAndRemoveItem_testItemIsAddedAndremoved(){
-        Cart cart=new Cart( );
         assertEquals(0, customer.countCartItems( ));
-        StoreItem item1=new StoreItem(ProductsCategory.GROCERIES, "name");
-        StoreItem item2=new StoreItem(ProductsCategory.CLOTHING, "clothes");
+        StoreProduct item1=new StoreProduct(ProductsCategory.GROCERIES, "name");
+        StoreProduct item2=new StoreProduct(ProductsCategory.CLOTHING, "clothes");
         customer.addItemToCart(item1);
         customer.addItemToCart(item2);
         assertEquals(2, customer.countCartItems( ));
@@ -40,17 +39,16 @@ public class EstoreTest{
     @Test
     void customerAddItemsToCart_testItemsAreAdded(){
         assertEquals(0, customer.countCartItems( ));
-        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
-        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
-        customer.addItemToCart(new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(new StoreProduct(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(new StoreProduct(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(new StoreProduct(ProductsCategory.GROCERIES, "name"));
         assertEquals(3, customer.countCartItems( ));
     }
     @Test
     void customerAddAndRemoveItem_testItemAreAddedAndRemoved(){
-        Cart cart=new Cart( );
         assertEquals(0, customer.countCartItems( ));
-        StoreItem item1=new StoreItem(ProductsCategory.GROCERIES, "spoon");
-        StoreItem item2=new StoreItem(ProductsCategory.UTENSILS, "spoon");
+        StoreProduct item1=new StoreProduct(ProductsCategory.GROCERIES, "spoon");
+        StoreProduct item2=new StoreProduct(ProductsCategory.UTENSILS, "spoon");
         customer.addItemToCart(item1);
         customer.addItemToCart(item2);
         assertEquals(2, customer.countCartItems( ));
@@ -66,25 +64,29 @@ public class EstoreTest{
     @Test
     void customerChangeProductType_testItemProductTypeIsChaged(){
         assertEquals(0, customer.countCartItems( ));
-        StoreItem item2=new StoreItem(ProductsCategory.UTENSILS, "spoon");
+        StoreProduct item2=new StoreProduct(ProductsCategory.UTENSILS, "spoon");
         customer.addItemToCart(item2);
         customer.changeProductType("spoon", ProductsCategory.ELECTRONICS);
-        assertTrue(item2.getProductType( )==ProductsCategory.ELECTRONICS);
+        assertSame(item2.getProductType( ), ProductsCategory.ELECTRONICS);
     }
     @Test
     void customerChangesItemName_testItemNameIsChanged(){
         assertEquals(0, customer.countCartItems( ));
-        StoreItem items=new StoreItem(ProductsCategory.GROCERIES, "biscuit");
+        StoreProduct items=new StoreProduct(ProductsCategory.GROCERIES, "biscuit");
         customer.addItemToCart(items);
         customer.changeProductName("biscuit", "sweets");
     }
 
     @Test
     void customerGetTwoCartFromStore_ExceptioIsThrown(){
-        customer.getCartFromStore( );
         assertThrows(MaximumCartNumberException.class, ()->customer.getCartFromStore( ));
     }
-    //test customer cannot have two carts
+
+    @Test
+    void customerChangesNumberOfProducts_numberOfItemsIsChanged(){
+        customer.addItemToCart(new StoreProduct(ProductsCategory.GROCERIES, "name"));
+        assertEquals(1, customer.countCartItems( ));
+    }
     // test customer change number of items in cart
     // test customer can give card admin matches customer and seller
 }

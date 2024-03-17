@@ -11,7 +11,7 @@ public class StoreCustomer{
         return cart.numberOfItems( );
     }
 
-    public void addItemToCart(StoreItem item){
+    public void addItemToCart(StoreProduct item){
         cart.addItem(item);
     }
 
@@ -20,7 +20,7 @@ public class StoreCustomer{
 
     }
 
-    public boolean checkItem(StoreItem item1){
+    public boolean checkItem(StoreProduct item1){
         return cart.checkItem(item1);
     }
 

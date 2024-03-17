@@ -1,10 +1,10 @@
 package eStore;
 
-public class StoreItem{
+public class StoreProduct{
     private String itemName;
     private Enum category;
 
-    public StoreItem(ProductsCategory category, String itemName){
+    public StoreProduct(ProductsCategory category, String itemName){
         this.category=category;
         this.itemName=itemName;
     }
