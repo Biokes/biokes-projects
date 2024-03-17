@@ -1,27 +1,21 @@
 package eStore;
 
+import MentrualApp.MenstrualApp;
+import ecommerceStore.ProductCategory;
+
 public class StoreProduct{
-    private String itemName;
-    private Enum category;
 
-    public StoreProduct(ProductsCategory category, String itemName){
-        this.category=category;
-        this.itemName=itemName;
+    private String productName;
+
+    public StoreProduct(String productName, ProductCategory productCategory){
+        this.productName=productName;
     }
 
-    public String getStoreProductName(){
-        return this.itemName;
+    public double getPrice(){
+        return calculateProductPrice( );
     }
 
-    public void setStoreProductName(String name){
-        this.itemName=name;
-    }
-
-    public Enum getStoreProductType(){
-        return this.category;
-    }
-
-    public void setStoreProductType(ProductsCategory productsCategory){
-        this.category=productsCategory;
+    private double calculateProductPrice(){
+        return this.productName.length( )*10.0;
     }
 }
