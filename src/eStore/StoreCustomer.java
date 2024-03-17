@@ -8,11 +8,12 @@ public class StoreCustomer{
         cart.addItem(item);
     }
 
-    public void removeItemByItemName(Cart cart, String itemName){
-        cart.remove(itemName);
-    }
+    public void removeItem(Cart cart, ProductsCategory category, String itemName){
+        cart.remove(category, itemName);
 
+    }
     public boolean checkItem(Cart cart, StoreItem item1){
         return cart.checkItem(item1);
     }
 }
+

@@ -4,6 +4,7 @@ import eStore.Cart;
 import eStore.ProductsCategory;
 import eStore.StoreCustomer;
 import eStore.StoreItem;
+import ecommerceStore.ItemNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,16 +29,6 @@ public class EstoreTest{
         assertEquals(1, customer.countItemsInside(cart));
     }
     @Test
-    void customerAddItemsToCart_testItemsAreAdded(){
-        Cart cart=new Cart( );
-        assertEquals(0, customer.countItemsInside(cart));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
-        assertEquals(3, customer.countItemsInside(cart));
-    }
-
-    @Test
     void customerAddItemToCartAndRemoveItem_testItemIsAddedAndremoved(){
         Cart cart=new Cart( );
         assertEquals(0, customer.countItemsInside(cart));
@@ -46,10 +37,19 @@ public class EstoreTest{
         customer.addItemToCart(cart, item1);
         customer.addItemToCart(cart, item2);
         assertEquals(2, customer.countItemsInside(cart));
-        customer.removeItemByItemName(cart, "clothes");
+        customer.removeItem(cart, ProductsCategory.CLOTHING, "clothes");
         assertEquals(1, customer.countItemsInside(cart));
     }
 
+    @Test
+    void customerAddItemsToCart_testItemsAreAdded(){
+        Cart cart=new Cart( );
+        assertEquals(0, customer.countItemsInside(cart));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
+        customer.addItemToCart(cart, new StoreItem(ProductsCategory.GROCERIES, "name"));
+        assertEquals(3, customer.countItemsInside(cart));
+    }
     @Test
     void customerAddAndRemoveItem_testItemAreAddedAndRemoved(){
         Cart cart=new Cart( );
@@ -59,8 +59,14 @@ public class EstoreTest{
         customer.addItemToCart(cart, item1);
         customer.addItemToCart(cart, item2);
         assertEquals(2, customer.countItemsInside(cart));
-        customer.removeItemByItemName(cart, "spoon");
+        customer.removeItem(cart, ProductsCategory.UTENSILS, "spoon");
         assertEquals(1, customer.countItemsInside(cart));
-        assertFalse(customer.checkItem(cart, item1));
+        assertTrue(customer.checkItem(cart, item1));
+    }
+
+    @Test
+    void customerCanRemoveItemThatIsNotCart_testExceptionISThrown(){
+        Cart cart=new Cart( );
+        assertThrows(ItemNotFoundException.class, ()->customer.removeItem(cart, ProductsCategory.CLOTHING, "clothes"));
     }
 }

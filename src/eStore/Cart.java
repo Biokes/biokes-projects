@@ -14,13 +14,16 @@ public class Cart{
     public StoreItem getItem(int index){
         return cart.get(index);
     }
-    public void remove(String itemName){
+
+    public void remove(ProductsCategory category, String itemName){
         for( int count=0; count<numberOfItems( ); count++ ){
-            if( getItem(count).getProductName( ).equalsIgnoreCase(itemName) ){
-                cart.remove(count);
-                break;
+            if( getItem(count).getProductName( ).equalsIgnoreCase(itemName) )
+                if( getItem(count).getProductType( ).equals(category) ){
+                    cart.remove(count);
+                    return;
             }
         }
+        throw new ItemNotFoundException( );
     }
     public boolean checkItem(StoreItem item1){
         for( StoreItem items : cart ){
