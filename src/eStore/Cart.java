@@ -22,12 +22,13 @@ public class Cart{
             }
         }
     }
-
     public boolean checkItem(StoreItem item1){
-        for( StoreItem items : cart )
-            if( items.getProductName( ).equals(item1.getProductName( )) )
+        for( StoreItem items : cart ){
+            if( items.getProductName( ).equals(item1.getProductName( )) ){
                 if( items.getProductType( ).equals(item1.getProductType( )) )
                     return true;
+            }
+        }
         return false;
     }
 }

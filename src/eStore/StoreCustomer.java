@@ -13,6 +13,6 @@ public class StoreCustomer{
     }
 
     public boolean checkItem(Cart cart, StoreItem item1){
-        cart.checkItem(item1);
+        return cart.checkItem(item1);
     }
 }

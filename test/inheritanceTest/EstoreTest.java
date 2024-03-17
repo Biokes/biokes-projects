@@ -7,8 +7,7 @@ import eStore.StoreItem;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EstoreTest{
     private StoreCustomer customer;
@@ -62,6 +61,6 @@ public class EstoreTest{
         assertEquals(2, customer.countItemsInside(cart));
         customer.removeItemByItemName(cart, "spoon");
         assertEquals(1, customer.countItemsInside(cart));
-        assertTrue(customer.checkItem(item1));
+        assertFalse(customer.checkItem(cart, item1));
     }
 }
