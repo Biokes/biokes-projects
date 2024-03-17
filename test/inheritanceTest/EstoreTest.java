@@ -67,7 +67,7 @@ public class EstoreTest{
         StoreProduct item2=new StoreProduct(ProductsCategory.UTENSILS, "spoon");
         customer.addItemToCart(item2);
         customer.changeProductType("spoon", ProductsCategory.ELECTRONICS);
-        assertSame(item2.getProductType( ), ProductsCategory.ELECTRONICS);
+        assertSame(item2.getStoreProductType( ), ProductsCategory.ELECTRONICS);
     }
     @Test
     void customerChangesItemName_testItemNameIsChanged(){
@@ -84,9 +84,13 @@ public class EstoreTest{
 
     @Test
     void customerChangesNumberOfProducts_numberOfItemsIsChanged(){
-        customer.addItemToCart(new StoreProduct(ProductsCategory.GROCERIES, "name"));
+        StoreProduct product=new StoreProduct(ProductsCategory.GROCERIES, "name");
+        StoreItem item=new StoreItem(product, 5);
+        customer.addItemToCart(product);
         assertEquals(1, customer.countCartItems( ));
+        customer.changeNumberOfItems(product, 8);
     }
+
     // test customer change number of items in cart
     // test customer can give card admin matches customer and seller
 }

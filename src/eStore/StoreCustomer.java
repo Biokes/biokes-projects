@@ -16,7 +16,7 @@ public class StoreCustomer{
     }
 
     public void removeItem(ProductsCategory category, String itemName){
-        cart.remove(category, itemName);
+        cart.removeItem(category, itemName);
 
     }
 
@@ -42,6 +42,9 @@ public class StoreCustomer{
         for( int counter=0; counter<cart.numberOfItems( ); counter++ )
             if( cart.getItem(counter).getProductName( ).equalsIgnoreCase(oldName) )
                 cart.getItem(counter).setProductName(newName);
+    }
+
+    public void changeNumberOfItems(StoreProduct product, int i){
     }
 }
 

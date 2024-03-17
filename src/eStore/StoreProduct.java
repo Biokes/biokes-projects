@@ -9,19 +9,19 @@ public class StoreProduct{
         this.itemName=itemName;
     }
 
-    public String getProductName(){
+    public String getStoreProductName(){
         return this.itemName;
     }
 
-    public Enum getProductType(){
+    public void setStoreProductName(String name){
+        this.itemName=name;
+    }
+
+    public Enum getStoreProductType(){
         return this.category;
     }
 
-    public void setProductType(ProductsCategory productsCategory){
+    public void setStoreProductType(ProductsCategory productsCategory){
         this.category=productsCategory;
-    }
-
-    public void setProductName(String name){
-        this.itemName=name;
     }
 }
