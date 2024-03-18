@@ -1,5 +1,4 @@
 package estoreTest;
-
 import eStore.Cart;
 import eStore.ItemAlreadyExistException;
 import eStore.StoreItem;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import static eStore.StoreProductCategory.*;
 import static org.junit.jupiter.api.Assertions.*;
-
 public class StoreCartTest{
     private Cart cart;
     @BeforeEach
@@ -46,10 +44,9 @@ public class StoreCartTest{
         cart.addItem(new StoreItem("toy", UTENSILS, 1));
         assertTrue(cart.checkItem("TOY"));
     }
-
     @Test
     void addSameItemTwice_testExceptionIsThrown(){
         cart.addItem(new StoreItem("toy", ELECTRONICS, 4));
-        assertThrows(ItemAlreadyExistException.class, ()->cart.addItem(new StoreItem("toy", ELECTRONICS, 4)))
+        assertThrows(ItemAlreadyExistException.class, ()->cart.addItem(new StoreItem("toy", ELECTRONICS, 4)));
     }
 }

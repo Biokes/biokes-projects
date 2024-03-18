@@ -5,6 +5,8 @@ import java.util.List;
 public class Cart{
     private final List<StoreItem> cart=new ArrayList<>( );
     public void addItem(StoreItem item){
+        if( checkItem(item.getProductName( )) )
+            throw new ItemAlreadyExistException( );
         cart.add(item);
     }
     public int numberOfItems(){
