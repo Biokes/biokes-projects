@@ -2,6 +2,7 @@ package estoreTest;
 
 import eStore.Cart;
 import eStore.StoreItem;
+import eStore.StoreItemNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
