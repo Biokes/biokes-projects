@@ -35,6 +35,9 @@ public class StoreCartTest{
         StoreItem item=cart.findItem("laptops");
         assertEquals(item, item1);
     }
-    //find item
 
+    @Test
+    void findItemsNotInCart_testExceptionIsThrown(){
+
+    }
 }
