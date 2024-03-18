@@ -29,4 +29,20 @@ public class StoreItemTest{
         assertThrows(InvalidQuantityException.class, ()->new StoreItem("name", UTENSILS, -4));
         assertThrows(InvalidQuantityException.class, ()->new StoreItem("name", UTENSILS, -90));
     }
+
+    @Test
+    void changeProductType_testProductTypeIsChanged(){
+        StoreItem item=new StoreItem("spoon", GROCERIES, 2);
+        item.chageProductType(UTENSILS);
+        assertEquals(1200, item.getPrice( ));
+    }
+
+    @Test
+    void changeItemQuantity_testItemQuantityIsChanged(){
+        StoreItem item=new StoreItem("spoon", GROCERIES, 2);
+        item.chageProductType(UTENSILS);
+        assertEquals(1200, item.getPrice( ));
+        item.changeQuantity(10);
+        assertEquals(6000, item.getPrice( ));
+    }
 }

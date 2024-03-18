@@ -44,4 +44,14 @@ public class StoreProduct{
     public String getProductName(){
         return this.name;
     }
+
+    public void setProductCategory(StoreProductCategory category){
+        this.productCategory=category;
+        this.price=productCategory.getPrice( )*this.name.length( );
+        this.description=String.format("""
+                Item Id : %s
+                Category Of Goods : %s
+                price At per : %s
+                """, this.getId( ), this.productCategory, getPrice( ));
+    }
 }

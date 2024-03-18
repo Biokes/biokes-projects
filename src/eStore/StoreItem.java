@@ -5,8 +5,14 @@ public class StoreItem{
     private StoreProduct product;
 
     public StoreItem(String productName, StoreProductCategory category, int quantity){
-        this.quantity=quantity;
+        validateQuantity(quantity);
         this.product=new StoreProduct(productName, category);
+    }
+
+    private void validateQuantity(int quantity){
+        if( quantity<1 )
+            throw new InvalidQuantityException( );
+        this.quantity=quantity;
     }
 
     public void chageProductName(String sweet){
@@ -23,5 +29,14 @@ public class StoreItem{
 
     public double getPrice(){
         return this.quantity*this.product.getPrice( );
+    }
+
+    public void chageProductType(StoreProductCategory category){
+        this.product.setProductCategory(category);
+    }
+
+    public void changeQuantity(int quantity){
+        validateQuantity(quantity);
+        this.quantity=quantity;
     }
 }
