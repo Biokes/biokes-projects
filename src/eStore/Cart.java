@@ -25,4 +25,10 @@ public class Cart{
         throw new StoreItemNotFoundException( );
     }
 
+    public boolean checkItem(String givenName){
+        for( StoreItem items : cart )
+            if( items.getProductName( ).equalsIgnoreCase(givenName) )
+                return true;
+        return false;
+    }
 }

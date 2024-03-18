@@ -1,14 +1,14 @@
 package estoreTest;
 
 import eStore.Cart;
+import eStore.ItemAlreadyExistException;
 import eStore.StoreItem;
 import eStore.StoreItemNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static eStore.StoreProductCategory.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StoreCartTest{
     private Cart cart;
@@ -40,9 +40,16 @@ public class StoreCartTest{
     void findItemsNotInCart_testExceptionIsThrown(){
         assertThrows(StoreItemNotFoundException.class, ()->cart.findItem("laptops"));
     }
+    @Test
+    void findItemInsideCart_testItemIsFound(){
+        assertFalse(cart.checkItem("laptops"));
+        cart.addItem(new StoreItem("toy", UTENSILS, 1));
+        assertTrue(cart.checkItem("TOY"));
+    }
 
     @Test
-    void findItemInsideCart_testItemIsFind(){
-
+    void addSameItemTwice_testExceptionIsThrown(){
+        cart.addItem(new StoreItem("toy", ELECTRONICS, 4));
+        assertThrows(ItemAlreadyExistException.class, ()->cart.addItem(new StoreItem("toy", ELECTRONICS, 4)))
     }
 }
