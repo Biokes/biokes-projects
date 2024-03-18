@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static eStore.StoreProductCategory.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StoreCartTest{
     private Cart cart;
@@ -38,6 +39,7 @@ public class StoreCartTest{
 
     @Test
     void findItemsNotInCart_testExceptionIsThrown(){
-
+        assertThrows(StoreItemNotFoundException.class, ()->cart.findItem("laptops"));
+);
     }
 }
