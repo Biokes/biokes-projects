@@ -29,7 +29,6 @@ public class StoreCartTest{
         cart.removeItem("laptops");
         assertEquals(0, cart.numberOfItems( ));
     }
-
     @Test
     void findItemInsuideCart_testItemIsFound(){
         StoreItem item1=new StoreItem("laptops", ELECTRONICS, 12);
@@ -37,10 +36,13 @@ public class StoreCartTest{
         StoreItem item=cart.findItem("laptops");
         assertEquals(item, item1);
     }
-
     @Test
     void findItemsNotInCart_testExceptionIsThrown(){
         assertThrows(StoreItemNotFoundException.class, ()->cart.findItem("laptops"));
-);
+    }
+
+    @Test
+    void findItemInsideCart_testItemIsFind(){
+
     }
 }
