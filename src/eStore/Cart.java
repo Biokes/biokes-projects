@@ -19,8 +19,15 @@ public class Cart{
         for( StoreItem item : cart ){
             if( item.getProductName( ).equalsIgnoreCase(productName) ){
                 cart.remove(item);
-//               break;
+                break;
             }
         }
+    }
+
+    public StoreItem findItem(String givenName){
+        for( StoreItem items : cart )
+            if( items.getProductName( ).equalsIgnoreCase(givenName) )
+                return items;
+        return null;
     }
 }

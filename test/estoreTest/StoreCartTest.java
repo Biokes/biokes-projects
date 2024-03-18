@@ -20,7 +20,6 @@ public class StoreCartTest{
         cart.addItem(item);
         assertEquals(1, cart.numberOfItems( ));
     }
-
     @Test
     void addAndRemoveItem_testItemIsSAddedAndRemoved(){
         cart.addItem(new StoreItem("Laptops", ELECTRONICS, 10));
@@ -28,4 +27,14 @@ public class StoreCartTest{
         cart.removeItem("laptops");
         assertEquals(0, cart.numberOfItems( ));
     }
+
+    @Test
+    void findItemInsuideCart_testItemIsFound(){
+        StoreItem item1=new StoreItem("laptops", ELECTRONICS, 12);
+        cart.addItem(item1);
+        StoreItem item=cart.findItem("laptops");
+        assertEquals(item, item1);
+    }
+    //find item
+
 }
