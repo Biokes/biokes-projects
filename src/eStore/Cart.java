@@ -15,4 +15,12 @@ public class Cart{
         return cart.size( );
     }
 
+    public void removeItem(String productName){
+        for( StoreItem item : cart ){
+            if( item.getProductName( ).equalsIgnoreCase(productName) ){
+                cart.remove(item);
+//               break;
+            }
+        }
+    }
 }
