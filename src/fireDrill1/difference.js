@@ -32,11 +32,11 @@
 // console.log("y = ", a/ (x*y*z) - 10)
 // console.log(typeof null)
 // ;let num = Array(5);
-var number = Number();
-var available = Boolean()
-var count = Number()
-var name = String()
-var author = String()
+var number = Number(9);
+var available = Boolean(false)
+var count = Number(-90.9)
+var name = String("kilo")
+var author = String("tiles")
 var value = [number, available, count, name, author]
 console.log(value)
 number = 5
