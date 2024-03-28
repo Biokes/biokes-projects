@@ -1,5 +1,4 @@
 class Person {
-
     minMAx(numbers) {
         let min = numbers[0]
         let max = numbers[0]
@@ -11,6 +10,6 @@ class Person {
     }
 }
 
-person = Person
-let instance = [2, 4, 5, 7, 8];
-console.log(person.minMAx(instance))
+person = new Person()
+let value = [2, 4, 5, 7, 8];
+console.log(person.minMAx(value))
