@@ -13,3 +13,10 @@ class Person {
 person = new Person()
 let value = [2, 4, 5, 7, 8];
 console.log(person.minMAx(value))
+var num = 5
+console.log(num)
+var num = 7
+console.log(num)
+let num = 5
+console.log(num)
+const nam = 7
