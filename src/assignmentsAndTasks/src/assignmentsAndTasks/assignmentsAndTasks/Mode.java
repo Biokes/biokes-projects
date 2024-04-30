@@ -1,4 +1,4 @@
-package assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks;
 
 import java.util.Arrays;
 

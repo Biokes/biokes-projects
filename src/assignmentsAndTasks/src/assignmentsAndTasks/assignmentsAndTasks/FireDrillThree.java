@@ -1,4 +1,4 @@
-package assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks;
 import java.util.ArrayList;
 public class FireDrillThree {
     public static int[] taskOne(int...num10){

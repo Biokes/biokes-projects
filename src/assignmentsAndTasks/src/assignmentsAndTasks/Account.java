@@ -1,4 +1,4 @@
-package assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks;
 
 public class Account {
     private int balance;

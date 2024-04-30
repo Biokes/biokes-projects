@@ -1,4 +1,4 @@
-package assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks;
 
 public class Gai implements BoyFriend{
     public String spend() {

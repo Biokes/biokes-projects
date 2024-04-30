@@ -1,4 +1,4 @@
-package assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks;
 
 public class Girl {
     public static void main(String[] args){

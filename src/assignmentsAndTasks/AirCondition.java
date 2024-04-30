@@ -44,28 +44,28 @@ public class AirCondition {
     }
     public String decreaseTemperature(int number){
         String  returnValue="";
-        if(checkACStatus()== true && (temperature - number) < 16){
+        if(checkACStatus()&& (temperature - number) < 16){
             temperature = 16;
             returnValue = String.format("temperature : %sdegrees", temperature);
-        } else if (checkACStatus()== true && (temperature-number)>16 ) {
+        } else if (checkACStatus() && (temperature-number)>16 ) {
             temperature -= number;
             returnValue = String.format("temperature : %sdegrees", temperature);
 
-        }else if(checkACStatus() == false ){
+        }else if(!checkACStatus()){
             returnValue = "ac is off";
         }
         return returnValue;
     }
     public String decreaseTemperature(){
         String  returnValue="";
-        if(checkACStatus() == true && (temperature-1)>16){
+        if(checkACStatus() && (temperature-1)>16){
             temperature--;
             returnValue = String.format("temperature : %sdegrees", temperature);
-        } else if (checkACStatus() == true && (temperature-1)<16) {
+        } else if (checkACStatus() && (temperature-1)<16) {
             temperature = 16;
             returnValue = String.format("temperature : 16 %sdegrees", temperature);
         }
-        else if(checkACStatus() == false ){
+        else if(!checkACStatus()){
             returnValue = "ac is off";
         }
         return returnValue;
