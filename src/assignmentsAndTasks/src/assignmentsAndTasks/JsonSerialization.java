@@ -2,6 +2,8 @@ package assignmentsAndTasks.src.assignmentsAndTasks;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.time.LocalDate;
+
 import static assignmentsAndTasks.src.assignmentsAndTasks.Gender.MALE;
 
 
@@ -18,6 +20,7 @@ public class JsonSerialization {
     }
 
     public static void main(String[] args) {
-        System.out.println(serialize(new Person("name", "2024-12-17","09890293780",MALE)));
+        System.out.println(serialize(new Person("name",
+                LocalDate.of(2024,12,10),"09890293780",MALE)));
     }
 }

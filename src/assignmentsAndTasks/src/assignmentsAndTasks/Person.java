@@ -1,17 +1,31 @@
 package assignmentsAndTasks.src.assignmentsAndTasks;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
+import java.time.LocalDate;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Person {
     private String name;
-    private String dateOfBirth;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize (using = LocalDateDeserializer.class)
+    private LocalDate dateOfBirth;
     private String phoneNumber;
     private Gender gender;
     public Person(){}
-    public Person(String name, String dateOfBirth,String phoneNumber,Gender gender ){
+    public Person(String name, LocalDate dateOfBirth,String phoneNumber,Gender gender ){
         this.name= name;
         this.gender = gender;
         this.dateOfBirth= dateOfBirth;
         this.phoneNumber = phoneNumber;
     }
+
+
+
     public String getName() {
         return name;
     }
@@ -30,10 +44,10 @@ public class Person {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }
