@@ -1,10 +1,10 @@
-package assignmentsAndTasks.src.assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.time.LocalDate;
 
-import static assignmentsAndTasks.src.assignmentsAndTasks.Gender.MALE;
+import static assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks.Gender.MALE;
 
 
 public class JsonSerialization {

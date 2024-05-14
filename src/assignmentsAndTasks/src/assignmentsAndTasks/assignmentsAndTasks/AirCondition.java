@@ -1,4 +1,4 @@
-package assignmentsAndTasks.src.assignmentsAndTasks;
+package assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks;
 
 public class AirCondition {
     public boolean airConditionStatus;

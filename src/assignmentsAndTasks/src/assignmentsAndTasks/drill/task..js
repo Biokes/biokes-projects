@@ -8,6 +8,6 @@ function getHighest(ints){
     }
     output.forEach((num)=>  {if(num > max) max = num});
     if(ints.length === 1)
-        return ints[0];
+        return int[0];
     return max;
 }

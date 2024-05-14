@@ -1,6 +1,6 @@
 package assignmentsAndTasks.test;
 
-import assignmentsAndTasks.src.assignmentsAndTasks.Person;
+import assignmentsAndTasks.src.assignmentsAndTasks.assignmentsAndTasks.Person;
 import org.junit.jupiter.api.Test;
 
 public class JsonSerializerTest {
