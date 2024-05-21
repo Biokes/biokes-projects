@@ -3,7 +3,7 @@ package assignmentsAndTasks.src.assignmentsAndTasks.chapter15;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ public class Transaction {
     private String id;
     private BigDecimal amount;
     @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate date;
 
         @JsonProperty
@@ -48,6 +48,14 @@ public class Transaction {
     @JsonProperty
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+    @JsonProperty
+    public void setDate(LocalDate date){
+            this.date = date;
+    }
+    @JsonProperty
+    public LocalDate getDate(){
+            return date;
     }
     @JsonProperty
     private String type;

@@ -23,9 +23,6 @@ public class Person {
         this.dateOfBirth= dateOfBirth;
         this.phoneNumber = phoneNumber;
     }
-
-
-
     public String getName() {
         return name;
     }
