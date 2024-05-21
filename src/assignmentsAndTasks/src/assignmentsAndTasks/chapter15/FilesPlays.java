@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -48,6 +49,22 @@ public class FilesPlays {
                 .filter(data->!data.getDate()
                         .isBefore(date1)&& !data.getDate().isAfter(date2)).toList();
     }
+    public static BigDecimal getAverageTransaction(String date, String filePath){
+        try(FileReader reader = new FileReader(new File(filePath))){
+           List<Transaction> transactions = Arrays.stream(new ObjectMapper().readValue(reader, Transaction[].class))
+                    .filter(transaction -> transaction.getDate().isEqual(parseDate(date))).toList();
+           BigDecimal output = BigDecimal.ZERO;
+           for(Transaction records : transactions) {
+               if (records.getType().equals("CREDIT")) output = output.add(records.getAmount());
+               else output = output.subtract(records.getAmount());
+           }
+           return output.divide(BigDecimal.valueOf(transactions.size()), 2);
+        }
+        catch(Exception error){
+            throw new RuntimeException(error.getMessage());
+        }
+
+    }
     private static LocalDate parseDate(String date){
         return LocalDate.parse(date);
     }
@@ -59,4 +76,5 @@ public class FilesPlays {
             throw new RuntimeException(error.getMessage());
         }
     }
+
 }
