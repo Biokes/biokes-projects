@@ -10,23 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FilesPlays {
-//    public static void main(String[] args) throws IOException {
-//        out.println(getTransactions("C:\\Users\\DELL\\IdeaProjects" +
-//                "\\fireDrills\\src\\assignmentsAndTasks\\src\\assignmentsAndTasks\\drill\\value.js"));
-//    }
-//    public static BigDecimal getTransactions(String filePath) {
-//        BigDecimal total = BigDecimal.ZERO;
-//        try{
-//            FileReader reader = new FileReader(new File(filePath));
-//            ObjectMapper mapper = new ObjectMapper();
-//            Transaction[] transactions = mapper.readValue(reader,Transaction[].class);
-//            for(Transaction transaction : transactions) total= total.add(transaction.getAmount());
-//        }catch(Exception error){
-//            System.err.println("Error : " + error.getMessage());
-//            throw new RuntimeException(error.getMessage());
-//        }
-//        return total;
-//    }
     public static List<Transaction> getAllTransactionsOn(String date, String filePath){
         try(FileReader reader = new FileReader(filePath)){
             ObjectMapper mapper = new ObjectMapper();
@@ -49,10 +32,10 @@ public class FilesPlays {
                 .filter(data->!data.getDate()
                         .isBefore(date1)&& !data.getDate().isAfter(date2)).toList();
     }
-    public static BigDecimal getAverageTransaction(String date, String filePath){
+    public static BigDecimal getAverageTransaction(String startDate,String endDate, String filePath){
         try(FileReader reader = new FileReader(new File(filePath))){
            List<Transaction> transactions = Arrays.stream(new ObjectMapper().readValue(reader, Transaction[].class))
-                    .filter(transaction -> transaction.getDate().isEqual(parseDate(date))).toList();
+                    .filter(transaction -> transaction.getDate().isEqual(parseDate(startDate))).toList();
            BigDecimal output = BigDecimal.ZERO;
            for(Transaction records : transactions) {
                if (records.getType().equals("CREDIT")) output = output.add(records.getAmount());
