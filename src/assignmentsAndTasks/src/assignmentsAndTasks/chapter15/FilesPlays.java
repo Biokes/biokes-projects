@@ -4,10 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 public class FilesPlays {
     public static List<Transaction> getAllTransactionsOn(String date, String filePath){
@@ -32,16 +32,12 @@ public class FilesPlays {
                 .filter(data->!data.getDate()
                         .isBefore(date1)&& !data.getDate().isAfter(date2)).toList();
     }
-    public static BigDecimal getAverageTransaction(String startDate,String endDate, String filePath){
-        try(FileReader reader = new FileReader(new File(filePath))){
-           List<Transaction> transactions = Arrays.stream(new ObjectMapper().readValue(reader, Transaction[].class))
-                    .filter(transaction -> transaction.getDate().isEqual(parseDate(startDate))).toList();
-           BigDecimal output = BigDecimal.ZERO;
-           for(Transaction records : transactions) {
-               if (records.getType().equals("CREDIT")) output = output.add(records.getAmount());
-               else output = output.subtract(records.getAmount());
-           }
-           return output.divide(BigDecimal.valueOf(transactions.size()), 2);
+    public static double getAverageTransaction(String startDate,String endDate, String filePath){
+        try{
+           List<Transaction> transactionList = getTransactionsWithin(startDate,endDate,filePath);
+           return transactionList.stream()
+                   .flatMapToDouble(data-> DoubleStream.of(data.getAmount().doubleValue()))
+                   .average().getAsDouble();
         }
         catch(Exception error){
             throw new RuntimeException(error.getMessage());

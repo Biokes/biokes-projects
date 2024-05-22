@@ -17,7 +17,7 @@ public class Transaction {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate date;
 
-        @JsonProperty
+    @JsonProperty
     public String getName() {
         return name;
     }
