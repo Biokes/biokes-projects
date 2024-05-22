@@ -25,8 +25,7 @@ public class FilesPlayTest {
     }
     @Test
     void testGetAverageTransaction(){
-        assertEquals(new BigDecimal("104500"),getAverageTransaction("2024-12-21","2024-12-22",
+        assertEquals(104500,getAverageTransaction("2024-12-21","2024-12-22",
         "C:\\Users\\DELL\\IdeaProjects\\fireDrills\\src\\assignmentsAndTasks\\src\\assignmentsAndTasks\\drill\\value.js"));
     }
-
 }
